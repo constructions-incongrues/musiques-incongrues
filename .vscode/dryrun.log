@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/workspace/net.musiques-incongrues.www'
+# Install app dependencies (composer, npm, etc)
+./composer.phar install
+./composer.phar install -d src/web/forum/extensions/constructions-incongrues/vanilla-ext-bookmarklet
+./composer.phar install -d src/web/forum/extensions/constructions-incongrues/vanilla-ext-fields
+# Configure app
+ant configure build -Dprofile=developer-portal
+make: Leaving directory '/workspace/net.musiques-incongrues.www'
+ 

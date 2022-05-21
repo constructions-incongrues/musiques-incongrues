@@ -1,0 +1,390 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat May 21 13:57:23 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+RUBY_VERSION = ruby-2.7.6
+# automatic
+?F = $(notdir $?)
+# environment
+GP_OPEN_EDITOR = /ide/bin/remote-cli/gitpod-code
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_AGENT_FOLDER = /home/gitpod/.vscode-server
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+VSX_REGISTRY_URL = https://open-vsx.gitpod.io
+# environment
+GRADLE_HOME = /home/gitpod/.sdkman/candidates/gradle/current
+# environment
+rvm_path = /home/gitpod/.rvm
+# environment
+SUPERVISOR_ADDR = localhost:22999
+# environment
+SUPERVISOR_ENVVAR_OTS = https://gitpod.io/api/ots/get/60a2d343-bea0-419d-9c1c-3a727cff5c99
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /workspace/net.musiques-incongrues.www
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# environment
+_ = /home/gitpod/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/node
+# environment
+GITPOD_THEIA_PORT = 23000
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+GITPOD_ANALYTICS_WRITER = segment
+# environment
+GO_VERSION = 1.18.2
+# environment
+MAVEN_HOME = /home/gitpod/.sdkman/candidates/maven/current
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+GITPOD_WORKSPACE_CONTEXT_URL = https://github.com/constructions-incongrues/net.musiques-incongrues.www
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+THEIA_WORKSPACE_ROOT = /workspace/net.musiques-incongrues.www
+# environment
+INFOPATH = :/home/linuxbrew/.linuxbrew/share/info
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+GIT_EDITOR = /ide/bin/remote-cli/gitpod-code --wait
+# environment
+VSCODE_CWD = /home/gitpod
+# environment
+SSH_CONNECTION = UNKNOWN 65535 UNKNOWN 65535
+# environment
+PATH = /home/gitpod/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/remote-cli:/home/gitpod/.nix-profile/bin:/home/gitpod/.sdkman/candidates/maven/current/bin:/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/.sdkman/candidates/gradle/current/bin:/workspace/.cargo/bin:/home/gitpod/.pyenv/plugins/pyenv-virtualenv/shims:/home/gitpod/.pyenv/shims:/workspace/go/bin:/home/gitpod/.nix-profile/bin:/home/gitpod/.rvm/gems/ruby-2.7.6/bin:/home/gitpod/.rvm/gems/ruby-2.7.6@global/bin:/home/gitpod/.rvm/rubies/ruby-2.7.6/bin:/home/gitpod/.nix-profile/bin:/ide/bin/remote-cli:/home/gitpod/go/bin:/home/gitpod/go-packages/bin:/home/gitpod/.nvm/versions/node/v16.15.0/bin:/workspace/.pip-modules/bin:/home/gitpod/.pyenv/bin:/workspace/.rvm/bin:/home/gitpod/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/gitpod/.rvm/bin:/home/gitpod/.nvm/versions/node/v16.15.0/bin:/home/gitpod/.rvm/bin
+# environment
+GITPOD_OWNER_ID = 82295d01-97b0-44c3-bd3b-6f3285b58609
+# environment
+GITPOD_WORKSPACE_ID = constructio-netmusiques-jnk0c38x4gm
+# environment
+GITPOD_INTERVAL = 30000
+# environment
+CARGO_HOME = /workspace/.cargo
+# environment
+rvm_stored_umask = 0022
+# environment
+GITPOD_WORKSPACE_CLUSTER_HOST = ws-eu45.gitpod.io
+# environment
+GITPOD_ANALYTICS_SEGMENT_KEY = bUY8IRdJ42KjLOBS9LoIHMYFBD8rSzjU
+# environment
+SDKMAN_DIR = /home/gitpod/.sdkman
+# environment
+SDKMAN_CANDIDATES_API = https://api.sdkman.io/2
+# environment
+GOPATH = /workspace/go
+# environment
+SDKMAN_PLATFORM = linuxx64
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-73f010c5-953f-4327-85f7-9505f5661356.sock
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+NIX_VERSION = 2.6.0
+# environment
+LS_COLORS = 
+# automatic
+%F = $(notdir $%)
+# environment
+GP_PREVIEW_BROWSER = /ide/bin/remote-cli/gitpod-code --preview
+# environment
+VISUAL = /ide/bin/remote-cli/gitpod-code
+# environment
+NIX_SSL_CERT_FILE = /etc/ssl/certs/ca-certificates.crt
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+rvm_bin_path = /home/gitpod/.rvm/bin
+# environment
+WORKSPACEKIT_WRAP_NETNS = true
+# default
+.LOADED := 
+# environment
+GEM_HOME = /home/gitpod/.rvm/gems/ruby-2.7.6
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MANPATH = /home/gitpod/.nix-profile/share/man:/home/gitpod/.nix-profile/share/man:/home/gitpod/.nix-profile/share/man::/home/linuxbrew/.linuxbrew/share/man
+# environment
+NODE_VERSION = 16.15.0
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PYENV_SHELL = bash
+# environment
+HOME = /home/gitpod
+# environment
+THEIA_WEBVIEW_EXTERNAL_ENDPOINT = webview-{{hostname}}
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = gitpod
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+GITPOD_CLI_APITOKEN = s2eL6nJARUtLlzPiNGVHOhJ3QtUMlhpC
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+HOSTNAME = constructio-netmusiques-jnk0c38x4gm
+# environment
+GRADLE_USER_HOME = /workspace/.gradle/
+# environment
+MAKELEVEL := 0
+# environment
+GEM_PATH = /home/gitpod/.rvm/gems/ruby-2.7.6:/home/gitpod/.rvm/gems/ruby-2.7.6@global
+# environment
+SDKMAN_VERSION = 5.15.0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+IRBRC = /home/gitpod/.rvm/rubies/ruby-2.7.6/.irbrc
+# environment
+SHLVL = 1
+# environment
+NIX_PROFILES = /nix/var/nix/profiles/default /home/gitpod/.nix-profile
+# environment
+GITPOD_GIT_USER_NAME = Tristan Rivoallan
+# environment
+JAVA_HOME = /home/gitpod/.sdkman/candidates/java/current
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = gitpod
+# makefile
+.DEFAULT_GOAL := configure
+# environment
+GOROOT = /home/gitpod/go
+# environment
+GITPOD_IDE_ALIAS = code-desktop
+# environment
+rvm_version = 1.29.12 (latest)
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+GITPOD_REPO_ROOT = /workspace/net.musiques-incongrues.www
+# environment
+PIP_USER = no
+# environment
+THEIA_RATELIMIT_LOG = 50
+# environment
+THEIA_MINI_BROWSER_HOST_PATTERN = browser-{{hostname}}
+# environment
+GITPOD_GIT_USER_EMAIL = tristan@rivoallan.net
+# default
+MAKE_COMMAND := make
+# environment
+OLDPWD = /home/gitpod/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+GITPOD_PREVENT_METADATA_ACCESS = true
+# environment
+GITPOD_HOST = https://gitpod.io
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_CLIENT = UNKNOWN 65535 65535
+# environment
+MAIL = /var/mail/gitpod
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+rvm_user_install_flag = 1
+# environment
+BROWSER = /home/gitpod/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/helpers/browser.sh
+# environment
+GITPOD_MEMORY = 3435
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# environment
+GITPOD_TASKS = [{"init":"make"}]
+# default
+MAKEFILES := 
+# environment
+HOMEBREW_NO_AUTO_UPDATE = 1
+# automatic
+<F = $(notdir $<)
+# environment
+PIPENV_VENV_IN_PROJECT = true
+# environment
+TRIGGER_REBUILD = 1
+# environment
+GP_EXTERNAL_BROWSER = /ide/bin/remote-cli/gitpod-code --openExternal
+# environment
+SDKMAN_CANDIDATES_DIR = /home/gitpod/.sdkman/candidates
+# environment
+EDITOR = /ide/bin/remote-cli/gitpod-code
+# environment
+PWD = /workspace/net.musiques-incongrues.www
+# environment
+LC_ALL = C
+# environment
+GITPOD_WORKSPACE_CONTEXT = {"isFile":false,"path":"","title":"constructions-incongrues/net.musiques-incongrues.www - develop","ref":"develop","refType":"branch","revision":"bc41939bc32b4f563e55e86be71b32a92b5bfffd","repository":{"cloneUrl":"https://github.com/constructions-incongrues/net.musiques-incongrues.www.git","host":"github.com","name":"net.musiques-incongrues.www","owner":"constructions-incongrues","private":false},"normalizedContextURL":"https://github.com/constructions-incongrues/net.musiques-incongrues.www","checkoutLocation":"net.musiques-incongrues.www","additionalFiles":{".gitpod.yml":"# This configuration file was automatically generated by Gitpod.\n# Please adjust to your needs (see https://www.gitpod.io/docs/config-gitpod-file)\n# and commit this file to your remote git repository to share the goodness with others.\n\ntasks:\n  - init: make\n\n\n"}}
+# environment
+JAVA_TOOL_OPTIONS =  -Xmx3435m
+# automatic
+^F = $(notdir $^)
+# environment
+NVM_DIR = /home/gitpod/.nvm
+# environment
+rvm_prefix = /home/gitpod
+# default
+SUFFIXES := 
+# environment
+APACHE_DOCROOT_IN_REPO = public
+# environment
+PYENV_VIRTUALENV_INIT = 1
+# environment
+NGINX_DOCROOT_IN_REPO = public
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+rvm_loaded_flag = 1
+# environment
+GITPOD_INSTANCE_ID = 0860d15d-51da-4823-a0c6-fc05ace900a3
+# environment
+GITPOD_WORKSPACE_URL = https://constructio-netmusiques-jnk0c38x4gm.ws-eu45.gitpod.io
+# default
+.RECIPEPREFIX := 
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+LANG = C
+# environment
+PYTHONUSERBASE = /workspace/.pip-modules
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+MY_RUBY_HOME = /home/gitpod/.rvm/rubies/ruby-2.7.6
+# variable set hash-table stats:
+# Load=142/1024=14%, Rehash=0, Collisions=16/167=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2346, inode 1678450527): 21 files, no impossibilities.
+
+# 21 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+.PHONY: configure install start
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-21 13:52:02.955438486
+#  File has been updated.
+#  Successfully updated.
+
+start:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+	# Start service
+	# Dependencies are declared by adding a DEPENDENCIES= string at the end of the command
+	# eg. $(MAKE) -C ../../../.. musiquesincongrues-start-service DEPENDENCIES="rabbitmq ws"
+	$(MAKE) -C ../../../.. musiquesincongrues-start-service DEPENDENCIES="dbgp-proxy urlinfo"
+
+configure: install
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 6):
+	# Configure app
+	ant configure build -Dprofile=developer-portal
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+install:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 10):
+	# Install app dependencies (composer, npm, etc)
+	./composer.phar install
+	./composer.phar install -d src/web/forum/extensions/constructions-incongrues/vanilla-ext-bookmarklet
+	./composer.phar install -d src/web/forum/extensions/constructions-incongrues/vanilla-ext-fields
+
+# files hash-table stats:
+# Load=8/1024=1%, Rehash=0, Collisions=0/25=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 30 / storage = 295 B / avg = 9 B
+# current buf: size = 8162 B / used = 295 B / count = 30 / avg = 9 B
+
+# strcache performance: lookups = 42 / hit rate = 28%
+# hash-table stats:
+# Load=30/8192=0%, Rehash=0, Collisions=1/42=2%
+# Finished Make data base on Sat May 21 13:57:23 2022
+
+ 
