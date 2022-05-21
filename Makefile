@@ -2,6 +2,10 @@
 
 # Règles obligatoires
 
+bootstrap:
+	sudo apt-get update
+	sudo apt-get install -y ant
+
 configure: install
 	# Configure app
 	ant configure build -Dprofile=developer-portal
