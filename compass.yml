@@ -1,0 +1,17 @@
+name: musiques-incongrues
+id: ari:cloud:compass:ebf922bd-8400-49af-8dcb-f384206490c0:component/3ca9be5c-1446-451b-b849-cfcbacd07459/a2906006-f00e-490e-9007-5995c185b491
+description: Code source for http://www.musiques-incongrues.net
+configVersion: 1
+typeId: APPLICATION
+fields:
+  tier: 4
+links:
+  - name: null
+    type: REPOSITORY
+    url: https://github.com/constructions-incongrues/musiques-incongrues
+relationships:
+  DEPENDS_ON: []
+labels:
+  - language:php
+  - source:github
+customFields: null
