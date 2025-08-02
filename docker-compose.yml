@@ -1,0 +1,69 @@
+name: flarum
+
+services:
+  db:
+    image: mariadb:10
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./var/db:/var/lib/mysql
+    restart: always
+    env_file: .env
+
+  flarum:
+    image: crazymax/flarum:1.8.10
+    container_name: flarum
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    volumes:
+      - ./var/flarum/data:/data
+      - ./var/flarum/composer.json:/opt/flarum/composer.json
+      - ./var/flarum/composer.lock:/opt/flarum/composer.lock
+    environment:
+      - DB_HOST=db
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    restart: always
+    env_file: .env
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8010:80
+    env_file: .env
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:1.105.2
+    restart: always
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Europe/Paris
+      - N8N_DEFAULT_LOCALE=fr-FR
+      - N8N_RUNNERS_ENABLED=true
+    ports:
+      - 5678:5678
+    volumes:
+      - ./var/n8n:/home/node/.n8n
+    env_file: .env
+
+  s9formatter:
+    image: php:8
+    build:
+      context: ./opt/s9formatter-api
+      dockerfile: Dockerfile
+    ports:
+      - 8020:8020
+    volumes:
+      - ./opt/s9formatter-api:/var/www/html
+    env_file: .env
+    command: php -S 0.0.0:8020 -t /var/www/html
+
