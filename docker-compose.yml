@@ -30,6 +30,8 @@ services:
       - DB_PASSWORD=${MYSQL_PASSWORD}
     restart: always
     env_file: .env
+    networks:
+      - caddy
 
   phpmyadmin:
     image: phpmyadmin
@@ -38,6 +40,8 @@ services:
     labels:
       caddy: pma.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 80}}"
+    networks:
+      - caddy
 
   n8n:
     image: docker.n8n.io/n8nio/n8n:1.105.2
