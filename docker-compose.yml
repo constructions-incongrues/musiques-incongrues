@@ -8,7 +8,8 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - db_data:/var/lib/mysql
+      # - db_data:/var/lib/mysql
+      - ./var/db:/var/lib/mysql
     restart: always
     env_file: .env
 
@@ -42,6 +43,8 @@ services:
     labels:
       caddy: pma.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 80}}"
+    ports:
+      - 8010:80
     networks:
       - caddy
       - default
@@ -77,6 +80,14 @@ services:
       - ./opt/s9formatter-api:/var/www/html
     env_file: .env
     command: php -S 0.0.0:8020 -t /var/www/html
+
+  smtp:
+    image: registry.gitlab.com/egos-tech/smtp:latest
+    environment:
+      - SMARTHOST_ADDRESS=smtp.gmail.com
+      - SMARTHOST_PORT=587
+      - GMAIL_USER=${GMAIL_USER}
+      - GMAIL_PASSWORD=${GMAIL_PASSWORD}
 
 networks:
   caddy:
