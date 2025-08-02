@@ -8,7 +8,7 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./var/db:/var/lib/mysql
+      - db_data:/var/lib/mysql
     restart: always
     env_file: .env
 
@@ -81,4 +81,5 @@ networks:
     external: true
 
 volumes:
+  db_data: ~
   n8n_data: ~
