@@ -61,10 +61,7 @@
         "nearata/flarum-ext-remove-pane": "*",
         "sycho/flarum-profile-cover": "*",
         "the-turk/flarum-flamoji": "^1.0",
-        "webbinaro/flarum-calendar": "^1.7"
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
+        "webbinaro/flarum-calendar": "^1.7",
+        "spookygames/flarum-ext-auth-keycloak": "^1.3"
     }
 }
