@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./var/flarum/data/assets:/data/assets
+      - ./var/flarum/data:/data
       - ./var/flarum/composer.json:/opt/flarum/composer.json
       - ./var/flarum/composer.lock:/opt/flarum/composer.lock
     environment:
