@@ -1,0 +1,2979 @@
+[
+  {
+    "createdAt": "2025-06-07T19:29:33.258Z",
+    "updatedAt": "2025-06-08T05:59:25.000Z",
+    "id": "tjN3a4lVPTFpwEzD",
+    "name": "import.users",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          80
+        ],
+        "id": "5d5f6d4f-4da7-4c95-84e9-82c46854cf7a",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_User",
+            "mode": "list",
+            "cachedResultName": "LUM_User"
+          },
+          "returnAll": true,
+          "sort": {
+            "values": [
+              {
+                "column": "UserID"
+              }
+            ]
+          },
+          "options": {
+            "outputColumns": [
+              "UserID",
+              "Name",
+              "Email",
+              "CountVisit",
+              "CountDiscussions",
+              "CountComments",
+              "DateFirstVisit",
+              "DateLastActive",
+              "LastDiscussionPost",
+              "LastCommentPost"
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          440,
+          80
+        ],
+        "id": "cf49dabf-a811-4737-beb3-b84ddccfa9b5",
+        "name": "MySQL",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "table": {
+            "__rl": true,
+            "value": "LUM_User",
+            "mode": "list",
+            "cachedResultName": "LUM_User"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "UserID",
+          "valueToMatchOn": "2",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "Email",
+                "value": "mbertier@parishq.net"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          220,
+          80
+        ],
+        "id": "617ba8bb-f90b-4ea3-a760-65607a9cfb78",
+        "name": "MySQL1",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "table": {
+            "__rl": true,
+            "value": "flarum_users",
+            "mode": "list",
+            "cachedResultName": "flarum_users"
+          },
+          "options": {
+            "queryBatching": "independently",
+            "detailedOutput": true
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          940,
+          80
+        ],
+        "id": "0a0e7de5-6edd-4746-af5e-e6e2820dc980",
+        "name": "MySQL2",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        },
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "67f0e7bf-01b0-43cd-b2fb-840f4c75bb6c",
+                "name": "id",
+                "value": "={{ $json.UserID }}",
+                "type": "number"
+              },
+              {
+                "id": "20660ed9-9ac2-47f4-8532-f67b4719c3d5",
+                "name": "username",
+                "value": "={{String($json.Name) .replace(/[øØ]/g, 'o') .replace(/[æÆ]/g, 'ae') .replace(/[ßẞ]/g, 'ss') .normalize(\"NFD\") .replace(/[\\u0300-\\u036f]/g, \"\") .replace(/\\b\\w'/g, \"\") .replace(/ẞ/g, 'ß') .toLowerCase() .replace(/[^a-z0-9]+/g, '-') .replace(/-+/g, '-') .replace(/^-|-$/g, '')}}",
+                "type": "string"
+              },
+              {
+                "id": "a6b5fa53-3ec8-4c14-9a98-6c8ea2cfb2a2",
+                "name": "email",
+                "value": "={{ $json.Email }}_{{ $now.format('x') }}",
+                "type": "string"
+              },
+              {
+                "id": "c4c72e00-4e6f-4b74-8f13-2897eedd7d71",
+                "name": "is_email_confirmed",
+                "value": true,
+                "type": "boolean"
+              },
+              {
+                "id": "9a4573fc-2128-43e1-a2d7-c73f6772c85e",
+                "name": "joined_at",
+                "value": "={{ $json.DateFirstVisit }}",
+                "type": "string"
+              },
+              {
+                "id": "b7c51637-e716-427e-8382-6658eafe0438",
+                "name": "last_seen_at",
+                "value": "={{ $json.DateLastActive }}",
+                "type": "string"
+              },
+              {
+                "id": "77d464f8-bba8-48ad-b3c7-06be4e4ed223",
+                "name": "marked_all_as_read_at",
+                "value": "={{ $json.DateLastActive }}",
+                "type": "string"
+              },
+              {
+                "id": "76d26f59-46c4-45d6-a197-d41ecbca6b23",
+                "name": "read_notifications_at",
+                "value": "={{ $json.DateLastActive }}",
+                "type": "string"
+              },
+              {
+                "id": "e4e1254d-f696-489c-8dfe-a781496b08dd",
+                "name": "discussion_count",
+                "value": "={{ $json.CountDiscussions }}",
+                "type": "number"
+              },
+              {
+                "id": "c1f0251d-8fff-45af-8c24-747ebb45663d",
+                "name": "comment_count",
+                "value": "={{ $json.CountComments }}",
+                "type": "number"
+              },
+              {
+                "id": "45335d3d-8860-4426-8acc-ed94dccdf937",
+                "name": "password",
+                "value": "={{ $now.toISO().base64Encode() }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          660,
+          80
+        ],
+        "id": "a5555cc3-3c36-4864-8cd7-a7fec2697163",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "table": {
+            "__rl": true,
+            "value": "flarum_users",
+            "mode": "list",
+            "cachedResultName": "flarum_users"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "id",
+          "valueToMatchOn": "1",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "password",
+                "value": "$2y$12$iWjTq7zG.V63txOg3mY9POMhyS7z8VQHh7psuwf84DGZSRUmnp6Qi"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          280,
+          -180
+        ],
+        "id": "98a30687-7b9d-4271-a563-9cbe7061ccfc",
+        "name": "MySQL4",
+        "notesInFlow": true,
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        },
+        "notes": "bozoo / iloveouiedire"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SET FOREIGN_KEY_CHECKS=0;\nTRUNCATE TABLE flarum_discussions;\nTRUNCATE TABLE flarum_access_tokens;\nTRUNCATE TABLE flarum_users;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          0,
+          -180
+        ],
+        "id": "626c7637-8a77-4df6-95bb-a8c04f37be1b",
+        "name": "TRUNCATE",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "item.values",
+                "renameField": "=email"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          1160,
+          80
+        ],
+        "id": "1c575d43-356b-460b-83b9-18261d84244e",
+        "name": "Aggregate"
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "MySQL1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL1": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "MySQL2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL2": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "65ae31d6-985e-4a66-9a39-ce3d35435557",
+    "triggerCount": 0,
+    "tags": []
+  },
+  {
+    "createdAt": "2025-06-07T19:51:09.829Z",
+    "updatedAt": "2025-06-13T16:56:48.000Z",
+    "id": "MQ5Sn2jr6o1lDW4o",
+    "name": "import.discussions",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -280,
+          -140
+        ],
+        "id": "6c1254df-09d1-4796-ab9f-fcf1cbef51b1",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "d8261b42-91f5-4fe7-836e-feba9077d99b",
+                "name": "id",
+                "value": "={{ $('LUM_Discussion').item.json.DiscussionID }}",
+                "type": "number"
+              },
+              {
+                "id": "a8748107-33c1-4857-b8cf-2982630cbfbe",
+                "name": "user_id",
+                "value": "={{ $('LUM_Discussion').item.json.AuthUserID }}",
+                "type": "number"
+              },
+              {
+                "id": "e3c947e3-70d4-4b04-848a-b94c01570bea",
+                "name": "title",
+                "value": "={{ $('LUM_Discussion').item.json.Name }}",
+                "type": "string"
+              },
+              {
+                "id": "3c40d92a-ddb3-4b37-93a7-5ca8d6c196f1",
+                "name": "slug",
+                "value": "={{String($('LUM_Discussion').item.json.Name)\n.replace(/[øØ]/g, 'o')\n.replace(/[æÆ]/g, 'ae')\n.replace(/[ßẞ]/g, 'ss')\n.normalize(\"NFD\")\n.replace(/[\\u0300-\\u036f]/g, \"\")\n.replace(/\\b\\w'/g, \"\")\n.replace(/ẞ/g, 'ß')\n.toLowerCase()\n.replace(/[^a-z0-9]+/g, '-')\n.replace(/-+/g, '-')\n.replace(/^-|-$/g, '')}}",
+                "type": "string"
+              },
+              {
+                "id": "2b8d88b3-2373-4180-aa18-8ce9a9d0e321",
+                "name": "comment_count",
+                "value": "={{ $('CountComments').item.json.CountComments }}",
+                "type": "number"
+              },
+              {
+                "id": "a50d6296-ec36-4881-b84c-671704a8b4b9",
+                "name": "created_at",
+                "value": "={{ $('LUM_Discussion').item.json.DateCreated }}",
+                "type": "string"
+              },
+              {
+                "id": "5972d26b-af77-4db1-b8c8-1b59d6b3b2be",
+                "name": "is_private",
+                "value": 0,
+                "type": "number"
+              },
+              {
+                "id": "867d623d-97e4-4a51-975d-a8f8f91ff061",
+                "name": "last_posted_at",
+                "value": "={{ $('LUM_Discussion').item.json.DateLastActive }}",
+                "type": "string"
+              },
+              {
+                "id": "5fdbf118-b6b1-4605-81fe-4df36689321b",
+                "name": "participant_count",
+                "value": "={{ $('CountParticipants').item.json.CountParticipants }}",
+                "type": "string"
+              },
+              {
+                "id": "67a03896-fc20-4ea8-9dee-0dca7e058a39",
+                "name": "first_post_id",
+                "value": "={{ $('FirstPost').item.json.CommentID }}",
+                "type": "number"
+              },
+              {
+                "id": "0b730d81-9873-4129-b817-6513658497e2",
+                "name": "last_posted_user_id",
+                "value": "={{ $json.AuthUserID }}",
+                "type": "number"
+              },
+              {
+                "id": "0bd3f79b-b3c6-4120-b604-a612f8f5c427",
+                "name": "last_post_number",
+                "value": "={{ $('CountComments').item.json.CountComments }}",
+                "type": "number"
+              },
+              {
+                "id": "f56ca1af-0e29-42ed-932c-8cadd07dffb2",
+                "name": "last_post_id",
+                "value": "={{ $json.CommentID }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1040,
+          -140
+        ],
+        "id": "0df4bdb0-2b34-4bae-a2ba-befca7acbf64",
+        "name": "discussion"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SET FOREIGN_KEY_CHECKS=0;\nTRUNCATE TABLE flarum_posts;\nTRUNCATE TABLE flarum_discussion_tag;\nTRUNCATE TABLE flarum_discussions;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          -280,
+          -400
+        ],
+        "id": "535afd1a-aaf6-4656-bede-b89924217b56",
+        "name": "TRUNCATE",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussions",
+            "mode": "list",
+            "cachedResultName": "flarum_discussions"
+          },
+          "columnToMatchOn": "id",
+          "options": {
+            "queryBatching": "independently",
+            "detailedOutput": false
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          1260,
+          -140
+        ],
+        "id": "79407e4a-c816-4a40-9860-5d34a210fdb0",
+        "name": "flarum_discussions",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT d.DiscussionID, d.AuthUserID, d.Name, d.DateCreated, d.DateLastActive FROM LUM_Discussion d INNER JOIN LUM_USER u ON d.AuthUserID = u.UserID ORDER BY d.DateLastActive DESC;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          -60,
+          -140
+        ],
+        "id": "a21a60ac-479d-43fc-b5e5-e433a56eb63b",
+        "name": "LUM_Discussion",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT c.DiscussionID, COUNT(*) as CountComments FROM LUM_Comment c WHERE c.DiscussionID = {{ $('LUM_Discussion').item.json.DiscussionID }} AND c.Deleted != 1 AND c.WhisperUserID = 0;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          380,
+          -140
+        ],
+        "id": "0854baf5-0ce1-45db-9c1e-fa530ba302e2",
+        "name": "CountComments",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT c.DiscussionID, COUNT(DISTINCT(c.AuthUserID)) as CountParticipants FROM LUM_Comment c WHERE c.DiscussionID = {{ $json.DiscussionID }} AND c.Deleted != 1 AND c.WhisperUserID = 0",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          160,
+          -140
+        ],
+        "id": "000fa7df-a738-45d8-846b-5a2e301ab693",
+        "name": "CountParticipants",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Comment",
+            "mode": "list",
+            "cachedResultName": "LUM_Comment"
+          },
+          "limit": 1,
+          "where": {
+            "values": [
+              {
+                "column": "DiscussionID",
+                "value": "={{ $json.DiscussionID }}"
+              }
+            ]
+          },
+          "sort": {
+            "values": [
+              {
+                "column": "DateCreated"
+              }
+            ]
+          },
+          "options": {
+            "outputColumns": [
+              "CommentID"
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          600,
+          -140
+        ],
+        "id": "4aee0a66-9ba5-4d1a-a65b-b72ea3c48730",
+        "name": "FirstPost",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Comment",
+            "mode": "list",
+            "cachedResultName": "LUM_Comment"
+          },
+          "limit": 1,
+          "where": {
+            "values": [
+              {
+                "column": "DiscussionID",
+                "value": "={{ $('LUM_Discussion').item.json.DiscussionID }}"
+              }
+            ]
+          },
+          "sort": {
+            "values": [
+              {
+                "column": "DateCreated",
+                "direction": "DESC"
+              }
+            ]
+          },
+          "options": {
+            "outputColumns": [
+              "CommentID",
+              "AuthUserID"
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          820,
+          -140
+        ],
+        "id": "d77f5f29-2da8-4ae9-9019-b45646118970",
+        "name": "LastPost",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "LUM_Discussion",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "discussion": {
+        "main": [
+          [
+            {
+              "node": "flarum_discussions",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_discussions": {
+        "main": [
+          []
+        ]
+      },
+      "LUM_Discussion": {
+        "main": [
+          [
+            {
+              "node": "CountParticipants",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CountComments": {
+        "main": [
+          [
+            {
+              "node": "FirstPost",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CountParticipants": {
+        "main": [
+          [
+            {
+              "node": "CountComments",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "FirstPost": {
+        "main": [
+          [
+            {
+              "node": "LastPost",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LastPost": {
+        "main": [
+          [
+            {
+              "node": "discussion",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "5da0a492-65bb-4ee5-af57-3d60ca6d1239",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-13T16:51:01.445Z",
+        "updatedAt": "2025-06-13T16:51:01.445Z",
+        "id": "ijscaZWYcxg5Qw52",
+        "name": "OK"
+      }
+    ]
+  },
+  {
+    "createdAt": "2025-06-07T23:37:20.503Z",
+    "updatedAt": "2025-06-13T16:56:29.000Z",
+    "id": "FztBtdHKZbvTDOSi",
+    "name": "import.tags",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          380
+        ],
+        "id": "1ef71ee4-afb7-49af-bcee-892ae4b5833c",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5943d433-4b89-40db-99b1-a01c67b76e31",
+                "name": "id",
+                "value": "1",
+                "type": "string"
+              },
+              {
+                "id": "7802d09e-7b7e-487d-8167-cb65564b68cb",
+                "name": "name",
+                "value": "Général",
+                "type": "string"
+              },
+              {
+                "id": "c357d8ef-fe5b-4054-9135-c41f5d5434c6",
+                "name": "slug",
+                "value": "general",
+                "type": "string"
+              },
+              {
+                "id": "15bee475-7431-4edd-944c-a6423ccfadf2",
+                "name": "description",
+                "value": "Un heureux brouhaha",
+                "type": "string"
+              },
+              {
+                "id": "5d0cedc7-3932-4474-a47c-069ef5b68025",
+                "name": "color",
+                "value": "#2FD3B3",
+                "type": "string"
+              },
+              {
+                "id": "8b442d51-f0e3-45ff-8d4e-6cd3a2107504",
+                "name": "position",
+                "value": 0,
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          220,
+          80
+        ],
+        "id": "de1c42de-e1af-4657-a988-8f1670ca315a",
+        "name": "cat.general"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5943d433-4b89-40db-99b1-a01c67b76e31",
+                "name": "id",
+                "value": "5",
+                "type": "string"
+              },
+              {
+                "id": "7802d09e-7b7e-487d-8167-cb65564b68cb",
+                "name": "name",
+                "value": "Agenda",
+                "type": "string"
+              },
+              {
+                "id": "c357d8ef-fe5b-4054-9135-c41f5d5434c6",
+                "name": "slug",
+                "value": "agenda",
+                "type": "string"
+              },
+              {
+                "id": "15bee475-7431-4edd-944c-a6423ccfadf2",
+                "name": "description",
+                "value": "Rencontrer des gens rencontrer des gens rencontrer des gens",
+                "type": "string"
+              },
+              {
+                "id": "5d0cedc7-3932-4474-a47c-069ef5b68025",
+                "name": "color",
+                "value": "#FD3B38",
+                "type": "string"
+              },
+              {
+                "id": "7d8cec00-8736-4b45-ace4-e062946c4fcb",
+                "name": "position",
+                "value": 1,
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          220,
+          280
+        ],
+        "id": "b3ac056c-da8b-43d9-9a33-33e83380e8a4",
+        "name": "cat.agenda"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5943d433-4b89-40db-99b1-a01c67b76e31",
+                "name": "id",
+                "value": "666",
+                "type": "string"
+              },
+              {
+                "id": "7802d09e-7b7e-487d-8167-cb65564b68cb",
+                "name": "name",
+                "value": "Collections",
+                "type": "string"
+              },
+              {
+                "id": "c357d8ef-fe5b-4054-9135-c41f5d5434c6",
+                "name": "slug",
+                "value": "collections",
+                "type": "string"
+              },
+              {
+                "id": "15bee475-7431-4edd-944c-a6423ccfadf2",
+                "name": "description",
+                "value": "Fortiches fétiches",
+                "type": "string"
+              },
+              {
+                "id": "5d0cedc7-3932-4474-a47c-069ef5b68025",
+                "name": "color",
+                "value": "#98fd38",
+                "type": "string"
+              },
+              {
+                "id": "8cb9507d-7f11-4c37-a233-cf28f4f8d90e",
+                "name": "position",
+                "value": 2,
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          220,
+          480
+        ],
+        "id": "68c1a10b-172a-4579-98d0-9c46b39ee83a",
+        "name": "cat.collections"
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "table": {
+            "__rl": true,
+            "value": "flarum_tags",
+            "mode": "list",
+            "cachedResultName": "flarum_tags"
+          },
+          "columnToMatchOn": "id",
+          "options": {
+            "queryBatching": "independently"
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          660,
+          380
+        ],
+        "id": "61a667cc-29f6-4c54-90ad-6414478c8f77",
+        "name": "MySQL",
+        "alwaysOutputData": false,
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5943d433-4b89-40db-99b1-a01c67b76e31",
+                "name": "id",
+                "value": "4",
+                "type": "string"
+              },
+              {
+                "id": "7802d09e-7b7e-487d-8167-cb65564b68cb",
+                "name": "name",
+                "value": "Releases",
+                "type": "string"
+              },
+              {
+                "id": "c357d8ef-fe5b-4054-9135-c41f5d5434c6",
+                "name": "slug",
+                "value": "releases",
+                "type": "string"
+              },
+              {
+                "id": "15bee475-7431-4edd-944c-a6423ccfadf2",
+                "name": "description",
+                "value": "Au fond de tiroirs molletonnés",
+                "type": "string"
+              },
+              {
+                "id": "5d0cedc7-3932-4474-a47c-069ef5b68025",
+                "name": "color",
+                "value": "#9D38FD",
+                "type": "string"
+              },
+              {
+                "id": "4cd62882-60c4-4c8b-86fa-26ee880a994f",
+                "name": "position",
+                "value": 3,
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          220,
+          680
+        ],
+        "id": "6904f6f7-4a21-4218-85a5-0451e10dc816",
+        "name": "cat.releases"
+      },
+      {
+        "parameters": {
+          "numberInputs": 4
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          440,
+          359
+        ],
+        "id": "8b69d163-c51d-4b21-9e4c-6537d35b914a",
+        "name": "Merge"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SET FOREIGN_KEY_CHECKS=0;\nTRUNCATE TABLE flarum_discussion_tag;\nTRUNCATE TABLE flarum_tags;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          0,
+          -180
+        ],
+        "id": "62cc91e3-7bcf-405c-af14-3ad171f45c29",
+        "name": "TRUNCATE",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "cat.general",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "cat.agenda",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "cat.collections",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "cat.releases",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "cat.agenda": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "cat.general": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "cat.collections": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "MySQL": {
+        "main": [
+          []
+        ]
+      },
+      "cat.releases": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "ce81f7d8-e9de-4ed5-b6a8-20c339925060",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-13T16:51:01.445Z",
+        "updatedAt": "2025-06-13T16:51:01.445Z",
+        "id": "ijscaZWYcxg5Qw52",
+        "name": "OK"
+      }
+    ]
+  },
+  {
+    "createdAt": "2025-06-08T01:43:06.940Z",
+    "updatedAt": "2025-08-02T04:22:24.000Z",
+    "id": "j0oM8snPMjzI56Bm",
+    "name": "import.events",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "007094e6-669a-4583-85e3-856923a394a6",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT d.AuthUserID as user_id, d.Name as name, e.Date as event_start, e.Date as event_end, c.Body as description, d.DateCreated as created_at, d.DateLastActive as updated_at FROM LUM_Discussion d INNER JOIN LUM_Event e ON d.DiscussionID = e.DiscussionID INNER JOIN LUM_Comment c ON c.DiscussionID = e.DiscussionID ORDER BY d.DateCreated DESC;\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          224,
+          0
+        ],
+        "id": "cc6f1d43-5e4f-4098-9911-c1d4f76231ae",
+        "name": "LUM_Event",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "table": {
+            "__rl": true,
+            "value": "flarum_events",
+            "mode": "list",
+            "cachedResultName": "flarum_events"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.5,
+        "position": [
+          432,
+          0
+        ],
+        "id": "ef5737e0-0d2d-4c3d-bafd-c85dae13ef24",
+        "name": "Insert rows in a table",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "LUM_Event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LUM_Event": {
+        "main": [
+          [
+            {
+              "node": "Insert rows in a table",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "1790fe13-c170-4bf0-87cf-af9dca6772e7",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-08T01:43:42.909Z",
+        "updatedAt": "2025-06-13T16:55:39.003Z",
+        "id": "rwaJpinXHbFEzcm6",
+        "name": "TODO"
+      }
+    ]
+  },
+  {
+    "createdAt": "2025-06-08T01:43:22.458Z",
+    "updatedAt": "2025-06-08T04:00:16.000Z",
+    "id": "klJN6yEeS7sehpL0",
+    "name": "import.releases",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "fff8daff-406a-49a7-b0d3-f240be0dc49d",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Releases",
+            "mode": "list",
+            "cachedResultName": "LUM_Releases"
+          },
+          "returnAll": true,
+          "sort": {
+            "values": [
+              {
+                "column": "DiscussionID"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          220,
+          0
+        ],
+        "id": "4a3a5082-d143-4803-a007-1d05bf5655a6",
+        "name": "MySQL",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussion_tag",
+            "mode": "list",
+            "cachedResultName": "flarum_discussion_tag"
+          },
+          "dataMode": "defineBelow",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "discussion_id",
+                "value": "={{ $json.id }}"
+              },
+              {
+                "column": "tag_id",
+                "value": "4"
+              }
+            ]
+          },
+          "options": {
+            "detailedOutput": true,
+            "skipOnConflict": true
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          440,
+          0
+        ],
+        "id": "8b6030ec-658d-4417-910e-7429e7148ed1",
+        "name": "MySQL1",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL": {
+        "main": [
+          [
+            {
+              "node": "MySQL1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "d49bc76f-482a-4b16-bf5c-46c32c22367f",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-08T01:43:42.909Z",
+        "updatedAt": "2025-06-13T16:55:39.003Z",
+        "id": "rwaJpinXHbFEzcm6",
+        "name": "TODO"
+      }
+    ]
+  },
+  {
+    "createdAt": "2025-06-08T04:18:51.874Z",
+    "updatedAt": "2025-06-13T03:15:03.000Z",
+    "id": "LmjLvCvXAJRJvjSB",
+    "name": "import.stats",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -1000,
+          280
+        ],
+        "id": "737ec8b0-a916-4c86-a764-a237f6415377",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "ac7224ab-d1a5-4367-81bd-6e331097cb61",
+                "name": "entities",
+                "value": "={{  \n[\n\"LUM_User\",\n\"LUM_Comment\",\n\"LUM_Discussion\",\n\"LUM_Event\",\n\"LUM_Releases\"\n]\n\n}}",
+                "type": "array"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -780,
+          180
+        ],
+        "id": "3821cc52-9a2b-4004-a404-ce0d1875b666",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "entities",
+          "options": {
+            "destinationFieldName": "entity"
+          }
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -560,
+          180
+        ],
+        "id": "4d7489aa-deea-4df9-a1a4-bc701acefd9b",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT COUNT(*) as {{ $json.entity }} FROM {{ $json.entity }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          -340,
+          180
+        ],
+        "id": "f90e3742-bd5b-4549-8a74-868b4c5283b4",
+        "name": "MySQL",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "destinationFieldName": "source",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -120,
+          180
+        ],
+        "id": "5114ed27-5573-492d-ae5d-d7ef4953bb8f",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "ac7224ab-d1a5-4367-81bd-6e331097cb61",
+                "name": "entities",
+                "value": "={{  \n[\n\"flarum_users\",\n\"flarum_posts\",\n\"flarum_discussions\",\n\"flarum_events\"\n]\n\n}}",
+                "type": "array"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -780,
+          380
+        ],
+        "id": "9321b991-bba8-4c4b-8d07-17256584b939",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "entities",
+          "options": {
+            "destinationFieldName": "entity"
+          }
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -560,
+          380
+        ],
+        "id": "d3afa545-8b3c-48a1-acbd-0f5454bbe124",
+        "name": "Split Out1"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT COUNT(*) as {{ $json.entity }} FROM {{ $json.entity }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          -340,
+          380
+        ],
+        "id": "66ab733d-8837-40c2-8c23-58e6171fa6e3",
+        "name": "MySQL1",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "destinationFieldName": "dest",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -120,
+          380
+        ],
+        "id": "8190c4ce-840d-4eec-bdff-63537b489d54",
+        "name": "Aggregate1"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          100,
+          280
+        ],
+        "id": "c4719142-43f2-40bc-b6d6-8c8761810226",
+        "name": "Merge"
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Split Out1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out1": {
+        "main": [
+          [
+            {
+              "node": "MySQL1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL1": {
+        "main": [
+          [
+            {
+              "node": "Aggregate1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate1": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "70dab3db-54fe-45b4-9cee-d7dbe6b0e1d2",
+    "triggerCount": 0,
+    "tags": []
+  },
+  {
+    "createdAt": "2025-06-08T04:50:19.290Z",
+    "updatedAt": "2025-08-02T07:22:58.000Z",
+    "id": "8pDeYccEFmyuTRpv",
+    "name": "_import.main",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "formTitle": "Import",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.2,
+        "position": [
+          -256,
+          -32
+        ],
+        "id": "d2f69b85-9d04-409f-80c8-d1ed1cdc69b6",
+        "name": "On form submission",
+        "webhookId": "7c1728a9-39e1-42d1-b570-422f71ee6610"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "tjN3a4lVPTFpwEzD",
+            "mode": "list",
+            "cachedResultName": "import.users"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          192,
+          -32
+        ],
+        "id": "49e64d96-7b9c-49c7-ac50-2fdc878e60cd",
+        "name": "import.users"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MQ5Sn2jr6o1lDW4o",
+            "mode": "list",
+            "cachedResultName": "import.discussions"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          416,
+          -32
+        ],
+        "id": "bbf03dd3-0ab8-430b-b5b8-c410eb6a6e31",
+        "name": "import.discussions"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "FztBtdHKZbvTDOSi",
+            "mode": "list",
+            "cachedResultName": "import.tags"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          640,
+          -32
+        ],
+        "id": "a55cf586-144f-43f4-aa71-ca8d4b8a5959",
+        "name": "import.categories"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "klJN6yEeS7sehpL0",
+            "mode": "list",
+            "cachedResultName": "import.releases"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1088,
+          -128
+        ],
+        "id": "f27334bd-ea75-4235-a958-8f8c63395787",
+        "name": "import.releases"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "j0oM8snPMjzI56Bm",
+            "mode": "list",
+            "cachedResultName": "import.events"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1088,
+          64
+        ],
+        "id": "6840da1a-2c6a-4a0f-8943-2a3c6fda919a",
+        "name": "import.events"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "LmjLvCvXAJRJvjSB",
+            "mode": "list",
+            "cachedResultName": "import.stats"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          -256,
+          224
+        ],
+        "id": "57a8bdf2-f202-40c2-bfac-a5b1e9beea93",
+        "name": "import.data1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "LmjLvCvXAJRJvjSB",
+            "mode": "list",
+            "cachedResultName": "import.stats"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          -32,
+          -32
+        ],
+        "id": "91923a6e-d3de-4ade-b48d-79c4aa773a6d",
+        "name": "import.stats.pre"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "8UjLRrv8mPLOon3E",
+            "mode": "list",
+            "cachedResultName": "import.posts"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          864,
+          -32
+        ],
+        "id": "3aa5bc75-cfac-4497-9103-bf95acd5b12d",
+        "name": "import.posts"
+      }
+    ],
+    "connections": {
+      "On form submission": {
+        "main": [
+          [
+            {
+              "node": "import.stats.pre",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "import.users": {
+        "main": [
+          [
+            {
+              "node": "import.discussions",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "import.discussions": {
+        "main": [
+          [
+            {
+              "node": "import.categories",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "import.categories": {
+        "main": [
+          [
+            {
+              "node": "import.posts",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "import.stats.pre": {
+        "main": [
+          [
+            {
+              "node": "import.users",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "import.posts": {
+        "main": [
+          [
+            {
+              "node": "import.releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "import.events",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": null,
+    "pinData": {},
+    "versionId": "2cc8b363-0d3d-4dfb-83ab-ff0f136df6fe",
+    "triggerCount": 0,
+    "tags": []
+  },
+  {
+    "createdAt": "2025-06-13T06:48:43.043Z",
+    "updatedAt": "2025-06-13T16:55:56.000Z",
+    "id": "exVQVm8imfyGC44x",
+    "name": "import.discussions_tags",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -220,
+          80
+        ],
+        "id": "5695c1dc-c525-4af5-be70-5b507ddf96c8",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussion_tag",
+            "mode": "list",
+            "cachedResultName": "flarum_discussion_tag"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "discussion_id",
+          "valueToMatchOn": "={{ $json.DiscussionID }}",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "tag_id",
+                "value": "5"
+              }
+            ]
+          },
+          "options": {
+            "queryBatching": "independently"
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          660,
+          -20
+        ],
+        "id": "5913bfc5-8746-42b5-be17-d2ab36e92414",
+        "name": "MySQL1",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Event",
+            "mode": "list",
+            "cachedResultName": "LUM_Event"
+          },
+          "returnAll": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          440,
+          -20
+        ],
+        "id": "59323c89-b338-4c4b-804b-2a020842c542",
+        "name": "events",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Releases",
+            "mode": "list",
+            "cachedResultName": "LUM_Releases"
+          },
+          "returnAll": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          440,
+          180
+        ],
+        "id": "0a1fccbd-6ac8-47e8-9eb2-5e2f1f3ffcd6",
+        "name": "releases",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussion_tag",
+            "mode": "list",
+            "cachedResultName": "flarum_discussion_tag"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "discussion_id",
+          "valueToMatchOn": "={{ $json.DiscussionID }}",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "tag_id",
+                "value": "4"
+              }
+            ]
+          },
+          "options": {
+            "queryBatching": "independently"
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          660,
+          180
+        ],
+        "id": "a636c9a8-5fd3-451f-b01c-c88530e4c1f6",
+        "name": "MySQL",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "TRUNCATE TABLE flarum_discussion_tag",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          -220,
+          -280
+        ],
+        "id": "448ddd2d-371c-4db9-896f-1a942807ab3e",
+        "name": "TRUNCATE",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussions",
+            "mode": "list",
+            "cachedResultName": "flarum_discussions"
+          },
+          "returnAll": true,
+          "sort": {
+            "values": [
+              {
+                "column": "created_at",
+                "direction": "DESC"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          0,
+          80
+        ],
+        "id": "73c935c7-892a-4f55-85a1-f3ff914aaa2c",
+        "name": "flarum_discussions",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "table": {
+            "__rl": true,
+            "value": "flarum_discussion_tag",
+            "mode": "list",
+            "cachedResultName": "flarum_discussion_tag"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "discussion_id",
+          "valueToMatchOn": "={{ $json.id }}",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "tag_id",
+                "value": "1"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          220,
+          80
+        ],
+        "id": "08a9c777-8289-46da-a3f3-6f07188f7b90",
+        "name": "flarum_discussion_tag",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "flarum_discussions",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "events": {
+        "main": [
+          [
+            {
+              "node": "MySQL1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "releases": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL1": {
+        "main": [
+          []
+        ]
+      },
+      "MySQL": {
+        "main": [
+          []
+        ]
+      },
+      "flarum_discussions": {
+        "main": [
+          [
+            {
+              "node": "flarum_discussion_tag",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_discussion_tag": {
+        "main": [
+          [
+            {
+              "node": "events",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "releases",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "f1f6b3d2-aaad-4732-8c94-c1298d3d7876",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-13T16:51:01.445Z",
+        "updatedAt": "2025-06-13T16:51:01.445Z",
+        "id": "ijscaZWYcxg5Qw52",
+        "name": "OK"
+      }
+    ]
+  },
+  {
+    "createdAt": "2025-06-13T07:49:57.867Z",
+    "updatedAt": "2025-08-02T07:14:26.000Z",
+    "id": "P0YYEU6mKhcfLkbN",
+    "name": "import.posts.render",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          8
+        ],
+        "id": "a244e4ba-f96b-4e44-bb90-3094bc1b508d",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "flarum_posts",
+            "mode": "list",
+            "cachedResultName": "flarum_posts"
+          },
+          "returnAll": true,
+          "sort": {
+            "values": [
+              {
+                "column": "id"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          224,
+          8
+        ],
+        "id": "1b85b267-a318-47b5-b90c-d98cf47328bd",
+        "name": "flarum_posts",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "http://s9formatter:8020",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "text",
+                "value": "={{ $json.content }}"
+              }
+            ]
+          },
+          "options": {
+            "batching": {
+              "batch": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          672,
+          -64
+        ],
+        "id": "4e85a16d-284f-43b9-ace7-e2c7287d3a42",
+        "name": "s9formatter",
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "batchSize": 1000,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          448,
+          8
+        ],
+        "id": "4ab4849f-bb99-4968-9ff5-b981c14d1f57",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "table": {
+            "__rl": true,
+            "value": "flarum_posts",
+            "mode": "list",
+            "cachedResultName": "flarum_posts"
+          },
+          "dataMode": "defineBelow",
+          "columnToMatchOn": "id",
+          "valueToMatchOn": "={{ $('flarum_posts').item.json.id }}",
+          "valuesToSend": {
+            "values": [
+              {
+                "column": "content",
+                "value": "=<t>{{ $('s9formatter').item.json.data }}</t>"
+              },
+              {
+                "column": "discussion_id",
+                "value": "={{ $('flarum_posts').item.json.discussion_id }}"
+              },
+              {
+                "column": "created_at",
+                "value": "={{ $('flarum_posts').item.json.created_at }}"
+              }
+            ]
+          },
+          "options": {
+            "queryBatching": "single",
+            "detailedOutput": true
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          896,
+          16
+        ],
+        "id": "12cce7d0-a4fa-48da-a7f7-0b0670429208",
+        "name": "flarum_posts1",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        },
+        "onError": "continueErrorOutput"
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "flarum_posts",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_posts": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "s9formatter": {
+        "main": [
+          [
+            {
+              "node": "flarum_posts1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "s9formatter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_posts1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "5dcb18f8-7f77-40a1-b015-7e3a2f94ef65",
+    "triggerCount": 0,
+    "tags": []
+  },
+  {
+    "createdAt": "2025-06-13T08:39:02.975Z",
+    "updatedAt": "2025-08-02T01:03:43.000Z",
+    "id": "8UjLRrv8mPLOon3E",
+    "name": "import.posts",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          -248
+        ],
+        "id": "5dd6ad3a-aba5-430b-a7ab-9344ec9626db",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "TRUNCATE TABLE flarum_posts",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          0,
+          -544
+        ],
+        "id": "bdd42d58-4a47-4bcd-bdc1-6670b6279af2",
+        "name": "TRUNCATE",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "LUM_Comment",
+            "mode": "list",
+            "cachedResultName": "LUM_Comment"
+          },
+          "returnAll": true,
+          "where": {
+            "values": [
+              {
+                "column": "Deleted",
+                "condition": "!=",
+                "value": "1"
+              },
+              {
+                "column": "WhisperUserID",
+                "value": "0"
+              },
+              {
+                "column": "DiscussionID",
+                "value": "={{ $json.id }}"
+              },
+              {
+                "column": "DiscussionID",
+                "value": "={{ $json.id }}"
+              }
+            ]
+          },
+          "sort": {
+            "values": [
+              {
+                "column": "DateCreated",
+                "direction": "DESC"
+              }
+            ]
+          },
+          "options": {
+            "connectionLimit": 50,
+            "queryBatching": "single"
+          }
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          672,
+          -248
+        ],
+        "id": "bb8adbdf-fd93-469e-984f-0a7a10655675",
+        "name": "LUM_Comment",
+        "credentials": {
+          "mySql": {
+            "id": "VY3I1luvdP1CPLn3",
+            "name": "musiquesincongrues"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "540a3842-e955-4d1b-8379-b7531787091f",
+                "name": "id",
+                "value": "={{ $json.CommentID }}",
+                "type": "number"
+              },
+              {
+                "id": "40961082-76f7-43a3-ae8a-4ba892a1cce6",
+                "name": "=created_at",
+                "value": "={{ $json.DateCreated }}",
+                "type": "string"
+              },
+              {
+                "id": "6f40f923-4deb-4ff4-b540-92d74b734e90",
+                "name": "user_id",
+                "value": "={{ $json.AuthUserID }}",
+                "type": "number"
+              },
+              {
+                "id": "fc4a0519-806d-4fe3-aedf-e7bd9fa2cf35",
+                "name": "type",
+                "value": "comment",
+                "type": "string"
+              },
+              {
+                "id": "a7973beb-2765-4696-936f-3b3d3a5689f7",
+                "name": "content",
+                "value": "=<t>{{ $json.Body }}</t>",
+                "type": "string"
+              },
+              {
+                "id": "0b00ec83-1a45-4ecb-addf-7cdc9d3910e1",
+                "name": "edited_at",
+                "value": "={{ $json.DateEdited }}",
+                "type": "string"
+              },
+              {
+                "id": "83de80f4-9dee-4844-9091-9d72bde9e49f",
+                "name": "edited_user_id",
+                "value": "={{ $json.EditUserID }}",
+                "type": "number"
+              },
+              {
+                "id": "295144a7-7262-4670-98e4-4447e4b9a2f8",
+                "name": "ip_address",
+                "value": "={{ $json.RemoteIp }}",
+                "type": "string"
+              },
+              {
+                "id": "a9b68848-48cf-4a72-8f6a-8cc9c457d56f",
+                "name": "discussion_id",
+                "value": "={{ $json.DiscussionID }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1152,
+          -224
+        ],
+        "id": "0db7df66-ea99-4728-9cfa-e07e7cfa5c19",
+        "name": "comment"
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "table": {
+            "__rl": true,
+            "value": "flarum_posts",
+            "mode": "list",
+            "cachedResultName": "flarum_posts"
+          },
+          "columnToMatchOn": "id",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          1344,
+          -248
+        ],
+        "id": "468edbf2-6bc2-4956-81b1-47c7b5cadb06",
+        "name": "flarum_posts",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "batchSize": 1000,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          896,
+          -240
+        ],
+        "id": "516cf73b-2ecc-4b0d-bed6-1f00634126eb",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "table": {
+            "__rl": true,
+            "value": "flarum_tags",
+            "mode": "list",
+            "cachedResultName": "flarum_tags"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          224,
+          -248
+        ],
+        "id": "0450901d-e986-47b1-90d6-49f52c0a20ff",
+        "name": "flarum_tags",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT * FROM flarum_discussions d INNER JOIN flarum_discussion_tag dt ON d.id = dt.discussion_id AND dt.tag_id = {{ $json.id }} ORDER by d.created_at DESC",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.4,
+        "position": [
+          448,
+          -248
+        ],
+        "id": "b027bb1e-b287-443e-929e-f2a2b296fc4d",
+        "name": "flarum_discussions",
+        "credentials": {
+          "mySql": {
+            "id": "iipQi3VO9iAYjFrP",
+            "name": "flarum"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "flarum_tags",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LUM_Comment": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "comment": {
+        "main": [
+          [
+            {
+              "node": "flarum_posts",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "comment",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_posts": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_tags": {
+        "main": [
+          [
+            {
+              "node": "flarum_discussions",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "flarum_discussions": {
+        "main": [
+          [
+            {
+              "node": "LUM_Comment",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "d1c64c0c-1254-4b9c-a3d2-fa2ab39b341c",
+    "triggerCount": 0,
+    "tags": []
+  }
+]

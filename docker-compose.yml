@@ -57,8 +57,11 @@ services:
       - GENERIC_TIMEZONE=Europe/Paris
       - N8N_DEFAULT_LOCALE=fr-FR
       - N8N_RUNNERS_ENABLED=true
+    ports:
+      - 5678:5678
     volumes:
-      - n8n_data:/home/node/.n8n
+      # - n8n_data:/home/node/.n8n
+      - ./var/n8n:/home/node/.n8n
     env_file: .env
     labels:
       caddy: n8n.musiques-incongrues.net
