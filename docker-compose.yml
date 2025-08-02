@@ -14,7 +14,6 @@ services:
 
   flarum:
     image: crazymax/flarum:1.8.10
-    container_name: flarum
     depends_on:
       - db
     volumes:
