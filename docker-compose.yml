@@ -15,8 +15,6 @@ services:
   flarum:
     image: crazymax/flarum:1.8.10
     container_name: flarum
-    ports:
-      - 8000:8000
     depends_on:
       - db
     volumes:
@@ -32,6 +30,9 @@ services:
     env_file: .env
     networks:
       - caddy
+    labels:
+      caddy: futur.musiques-incongrues.net
+      caddy.reverse_proxy: "{{upstreams 8000}}"
 
   phpmyadmin:
     image: phpmyadmin
