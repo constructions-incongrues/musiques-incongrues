@@ -61,6 +61,8 @@ services:
     labels:
       caddy: n8n.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 5678}}"
+    networks:
+      - caddy
 
   s9formatter:
     image: php:8
