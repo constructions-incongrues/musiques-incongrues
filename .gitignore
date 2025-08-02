@@ -1,6 +1,7 @@
 /opt/s9formatter-api/vendor
 /opt/vtf
 /var/db
-/src/flarum/data
+/src/flarum/data/*
+!/src/flarum/data/.gitkeep
 /src/flarum/vendor
 /var/n8n
