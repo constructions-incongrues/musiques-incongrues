@@ -17,11 +17,9 @@ services:
     depends_on:
       - db
     volumes:
-      - ./var/flarum/data:/data
-      - ./var/flarum/data/extensions:/data/extensions
-      - ./var/flarum/data/storage:/data/storage
-      - ./var/flarum/composer.json:/opt/flarum/composer.json
-      - ./var/flarum/composer.lock:/opt/flarum/composer.lock
+      - ./src/flarum/data:/data
+      - ./src/flarum/composer.json:/opt/flarum/composer.json
+      - ./src/flarum/composer.lock:/opt/flarum/composer.lock
     environment:
       - DB_HOST=db
       - DB_NAME=${MYSQL_DATABASE}
@@ -84,4 +82,5 @@ networks:
 
 volumes:
   db_data: ~
+  flarum_data: ~
   n8n_data: ~

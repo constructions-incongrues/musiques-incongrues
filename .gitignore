@@ -1,8 +1,6 @@
 /opt/s9formatter-api/vendor
 /opt/vtf
 /var/db
-/var/flarum/data/assets
-/var/flarum/data/extensions
-/var/flarum/data/storage
-/var/flarum/vendor
+/src/flarum/data
+/src/flarum/vendor
 /var/n8n
