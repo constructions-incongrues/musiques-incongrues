@@ -47,7 +47,6 @@
         "fof/formatting": "^1.1",
         "fof/linguist": "^1.1",
         "fof/links": "^1.3",
-        "fof/oauth": "^1.7",
         "fof/pages": "^1.0",
         "fof/profile-image-crop": "*",
         "fof/reactions": "*",
