@@ -30,6 +30,7 @@ services:
     env_file: .env
     networks:
       - caddy
+      - default
     labels:
       caddy: futur.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 8000}}"
