@@ -18,6 +18,8 @@ services:
       - db
     volumes:
       - ./var/flarum/data:/data
+      - ./var/flarum/data/extensions:/data/extensions
+      - ./var/flarum/data/storage:/data/storage
       - ./var/flarum/composer.json:/opt/flarum/composer.json
       - ./var/flarum/composer.lock:/opt/flarum/composer.lock
     environment:
