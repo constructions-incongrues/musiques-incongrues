@@ -34,9 +34,10 @@ services:
   phpmyadmin:
     image: phpmyadmin
     restart: always
-    ports:
-      - 8010:80
     env_file: .env
+    labels:
+      caddy: pma.musiques-incongrues.net
+      caddy.reverse_proxy: "{{upstreams 80}}"
 
   n8n:
     image: docker.n8n.io/n8nio/n8n:1.105.2
@@ -45,25 +46,30 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
-      - WEBHOOK_URL=http://localhost:5678/
+      - WEBHOOK_URL=http://n8n:5678/
       - GENERIC_TIMEZONE=Europe/Paris
       - N8N_DEFAULT_LOCALE=fr-FR
       - N8N_RUNNERS_ENABLED=true
-    ports:
-      - 5678:5678
     volumes:
-      - ./var/n8n:/home/node/.n8n
+      - n8n_data:/home/node/.n8n
     env_file: .env
+    labels:
+      caddy: n8n.musiques-incongrues.net
+      caddy.reverse_proxy: "{{upstreams 5678}}"
 
   s9formatter:
     image: php:8
     build:
       context: ./opt/s9formatter-api
       dockerfile: Dockerfile
-    ports:
-      - 8020:8020
     volumes:
       - ./opt/s9formatter-api:/var/www/html
     env_file: .env
     command: php -S 0.0.0:8020 -t /var/www/html
 
+networks:
+  caddy:
+    external: true
+
+volumes:
+  n8n_data: ~
