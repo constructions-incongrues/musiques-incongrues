@@ -59,7 +59,7 @@ services:
       - N8N_RUNNERS_ENABLED=true
     volumes:
       - n8n_data:/home/node/.n8n
-      - ./etc/workflows:/tmp/workflows.json
+      - ./etc/workflows.json:/tmp/workflows.json
     env_file: .env
     labels:
       caddy: n8n.musiques-incongrues.net
