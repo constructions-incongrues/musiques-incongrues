@@ -43,6 +43,7 @@ services:
       caddy.reverse_proxy: "{{upstreams 80}}"
     networks:
       - caddy
+      - default
 
   n8n:
     image: docker.n8n.io/n8nio/n8n:1.105.2
@@ -63,6 +64,7 @@ services:
       caddy.reverse_proxy: "{{upstreams 5678}}"
     networks:
       - caddy
+      - default
 
   s9formatter:
     image: php:8
