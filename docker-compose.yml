@@ -16,7 +16,6 @@ services:
     image: crazymax/flarum:1.8.10
     depends_on:
       - db
-    user: 0:0
     volumes:
       - ./src/flarum/composer.json:/opt/flarum/composer.json
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
@@ -26,8 +25,6 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
-      - PUID=0
-      - PGID=0
     restart: always
     env_file: .env
     networks:
