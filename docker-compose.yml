@@ -16,6 +16,7 @@ services:
     image: crazymax/flarum:1.8.10
     depends_on:
       - db
+    user: 0:0
     volumes:
       - ./src/flarum/composer.json:/opt/flarum/composer.json
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
