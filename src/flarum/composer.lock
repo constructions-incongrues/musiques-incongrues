@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d01f26baa9f00651c7665a9160722cb",
+    "content-hash": "7b62e4f9db7758f33ccd8516ed6de64d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -7887,76 +7887,6 @@
                 "source": "https://github.com/middlewares/utils/tree/v3.3.0"
             },
             "time": "2021-07-04T17:56:23+00:00"
-        },
-        {
-            "name": "migratetoflarum/old-passwords",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/migratetoflarum/old-passwords.git",
-                "reference": "93186e3301433697782203cbaf9c71a43f4ef912"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/migratetoflarum/old-passwords/zipball/93186e3301433697782203cbaf9c71a43f4ef912",
-                "reference": "93186e3301433697782203cbaf9c71a43f4ef912",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "flarum/core": "^1.0"
-            },
-            "require-dev": {
-                "hautelook/phpass": "^1.1",
-                "phpunit/phpunit": "^9.5"
-            },
-            "suggest": {
-                "hautelook/phpass": "If you need to check against phpass hashes"
-            },
-            "type": "flarum-extension",
-            "extra": {
-                "flagrow": {
-                    "discuss": "https://discuss.flarum.org/d/8631"
-                },
-                "flarum-extension": {
-                    "icon": {
-                        "name": "fas fa-key",
-                        "color": "#fafafa",
-                        "backgroundColor": "#e7672e"
-                    },
-                    "title": "Old Passwords",
-                    "category": "feature"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "MigrateToFlarum\\OldPasswords\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Clark Winkelmann",
-                    "email": "clark.winkelmann@gmail.com",
-                    "homepage": "https://clarkwinkelmann.com/"
-                }
-            ],
-            "description": "Re-hash passwords from an old platform on the fly",
-            "keywords": [
-                "extension",
-                "flarum",
-                "migration",
-                "passwords"
-            ],
-            "support": {
-                "forum": "https://discuss.flarum.org/d/8631",
-                "issues": "https://github.com/migratetoflarum/old-passwords/issues",
-                "source": "https://github.com/migratetoflarum/old-passwords"
-            },
-            "time": "2021-05-28T15:15:54+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
