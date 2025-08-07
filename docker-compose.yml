@@ -27,6 +27,8 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - PUID=0
+      - PGID=0
     restart: always
     env_file: .env
     networks:
