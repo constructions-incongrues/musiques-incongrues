@@ -2,7 +2,7 @@ name: flarum
 
 services:
   db:
-    image: mariadb:10
+    image: mariadb:10.11.13
     command:
       - mysqld
       - --character-set-server=utf8mb4
