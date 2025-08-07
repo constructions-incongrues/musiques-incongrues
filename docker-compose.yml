@@ -20,9 +20,7 @@ services:
     volumes:
       - ./src/flarum/composer.json:/opt/flarum/composer.json
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
-      - ./var/flarum/data/assets:/opt/flarum/assets
-      - ./var/flarum/data/storage:/opt/flarum/storage
-      - ./var/flarum/data/extensions:/opt/flarum/extensions
+      - ./var/flarum/data:/data
     environment:
       - DB_HOST=db
       - DB_NAME=${MYSQL_DATABASE}
