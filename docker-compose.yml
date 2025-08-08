@@ -21,7 +21,7 @@ services:
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
       - flarum_data:/data
       - flarum_vendor:/opt/flarum/vendor
-      - ./src/flarum/emojis:/data/assets/emojis
+      - ./src/flarum/emojis:/opt/flarum/public/emojis
     environment:
       - DB_HOST=db
       - DB_NAME=${MYSQL_DATABASE}
