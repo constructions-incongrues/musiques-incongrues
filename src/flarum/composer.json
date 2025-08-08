@@ -63,6 +63,7 @@
         "the-turk/flarum-flamoji": "^1.0",
         "webbinaro/flarum-calendar": "^1.7",
         "spookygames/flarum-ext-auth-keycloak": "^1.3",
-        "nearata/flarum-ext-cloudflare": "*"
+        "nearata/flarum-ext-cloudflare": "*",
+        "datlechin/flarum-discussion-count": "*"
     }
 }

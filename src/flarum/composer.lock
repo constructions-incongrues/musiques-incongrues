@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b62e4f9db7758f33ccd8516ed6de64d",
+    "content-hash": "adf8dae7eb98cd6eb7812f58fc8808d2",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -720,6 +720,83 @@
                 "source": "https://github.com/datlechin/flarum-copy-links"
             },
             "time": "2023-12-17T07:44:52+00:00"
+        },
+        {
+            "name": "datlechin/flarum-discussion-count",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datlechin/flarum-discussion-count.git",
+                "reference": "b0184faefd45b6e36dbb73d7fbbb397085052107"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datlechin/flarum-discussion-count/zipball/b0184faefd45b6e36dbb73d7fbbb397085052107",
+                "reference": "b0184faefd45b6e36dbb73d7fbbb397085052107",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.2.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "js": true,
+                        "css": false,
+                        "admin": false,
+                        "forum": true,
+                        "locale": false,
+                        "gitConf": true,
+                        "styleci": true,
+                        "jsCommon": false,
+                        "prettier": true,
+                        "typescript": false,
+                        "bundlewatch": false,
+                        "editorConfig": true,
+                        "githubActions": true,
+                        "backendTesting": false
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-comments",
+                        "color": "#fff",
+                        "backgroundColor": "#D3241C"
+                    },
+                    "title": "Discussion Count",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Datlechin\\DiscussionCount\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ngo Quoc Dat",
+                    "email": "datlechin@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Display discussion count against tags.",
+            "keywords": [
+                "discussion count",
+                "flarum",
+                "flarum extension",
+                "tags"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/31112",
+                "issues": "https://github.com/datlechin/flarum-discussion-count/issues",
+                "source": "https://github.com/datlechin/flarum-discussion-count"
+            },
+            "time": "2022-06-27T05:44:19+00:00"
         },
         {
             "name": "datlechin/flarum-remove-sidenav",
