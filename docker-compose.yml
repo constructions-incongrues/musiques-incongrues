@@ -71,7 +71,6 @@ services:
       - default
 
   s9formatter:
-    image: php:8
     build:
       context: ./opt/s9formatter-api
       dockerfile: Dockerfile
