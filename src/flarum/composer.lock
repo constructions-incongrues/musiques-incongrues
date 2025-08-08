@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0875fdd2bf4922c3c8cf0d07aabd7b37",
+    "content-hash": "5416d481032c8f34220b12ccdd72b025",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -549,6 +549,73 @@
                 "source": "https://github.com/clarkwinkelmann/flarum-ext-composer-page"
             },
             "time": "2023-10-02T20:37:39+00:00"
+        },
+        {
+            "name": "clarkwinkelmann/flarum-ext-discussion-bookmarks",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clarkwinkelmann/flarum-ext-discussion-bookmarks.git",
+                "reference": "6cefd5e90deb33e9c89334523c6b5478ab5d8925"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clarkwinkelmann/flarum-ext-discussion-bookmarks/zipball/6cefd5e90deb33e9c89334523c6b5478ab5d8925",
+                "reference": "6cefd5e90deb33e9c89334523c6b5478ab5d8925",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "flarum/core": "^1.3.1"
+            },
+            "replace": {
+                "clarkwinkelmann/flarum-ext-bookmarks": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/25357"
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-bookmark",
+                        "color": "#fff",
+                        "backgroundColor": "#684ba6"
+                    },
+                    "title": "Discussion Bookmarks",
+                    "category": "feature",
+                    "optional-dependencies": [
+                        "v17development/flarum-blog"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ClarkWinkelmann\\DiscussionBookmarks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Bookmark discussions to find them easily later",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/25357",
+                "issues": "https://github.com/clarkwinkelmann/flarum-ext-discussion-bookmarks/issues",
+                "source": "https://github.com/clarkwinkelmann/flarum-ext-discussion-bookmarks"
+            },
+            "time": "2023-12-16T16:14:35+00:00"
         },
         {
             "name": "clarkwinkelmann/flarum-ext-formatted-banner",
