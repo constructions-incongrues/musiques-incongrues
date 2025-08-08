@@ -71,9 +71,10 @@ services:
       - default
 
   s9formatter:
-    build:
-      context: ./opt/s9formatter-api
-      dockerfile: Dockerfile
+    image: s9formatter:0
+    # build:
+    #   context: ./opt/s9formatter-api
+    #   dockerfile: Dockerfile
     env_file: .env
     command: php -S 0.0.0:8020 -t /var/www/html
 
