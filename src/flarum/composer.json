@@ -68,6 +68,6 @@
         "litalino/mason": "^1.2",
         "clarkwinkelmann/flarum-ext-discussion-bookmarks": "^2.0",
         "dhtml/composer": "^2.1",
-        "fof/frontpage": "^1.2"
+        "fof/discussion-thumbnail": "*"
     }
 }
