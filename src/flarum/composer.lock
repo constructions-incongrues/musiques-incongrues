@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8936dd0c8b968472ba226839c2bfdec",
+    "content-hash": "4bf6dfef92fddcbd99b9e94a7678adce",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3644,6 +3644,83 @@
                 }
             ],
             "time": "2025-04-03T21:08:37+00:00"
+        },
+        {
+            "name": "fof/frontpage",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/frontpage.git",
+                "reference": "d3bf7ecf5c3c7cc217ac0c413f214f18cb6ca572"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/frontpage/zipball/d3bf7ecf5c3c7cc217ac0c413f214f18cb6ca572",
+                "reference": "d3bf7ecf5c3c7cc217ac0c413f214f18cb6ca572",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.2.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "flarum/phpstan": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/19256"
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-home",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF FrontPage",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\FrontPage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lopez",
+                    "email": "me@ralkage.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Push discussions to the front of your Flarum forum index!",
+            "homepage": "https://friendsofflarum.org",
+            "keywords": [
+                "flarum",
+                "front-page",
+                "push-to-front"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/19256",
+                "issues": "https://github.com/FriendsOfFlarum/frontpage/issues",
+                "source": "https://github.com/FriendsOfFlarum/frontpage"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/fof/donate",
+                    "type": "website"
+                }
+            ],
+            "time": "2023-11-12T11:57:10+00:00"
         },
         {
             "name": "fof/linguist",
