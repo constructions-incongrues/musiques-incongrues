@@ -71,7 +71,7 @@ services:
       - default
 
   s9formatter:
-    image: s9formatter:0
+    image: s9formatter-api:0
     # build:
     #   context: ./opt/s9formatter-api
     #   dockerfile: Dockerfile
