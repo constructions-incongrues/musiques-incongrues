@@ -58,7 +58,7 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
-      - WEBHOOK_URL=http://n8n:5678/
+      - WEBHOOK_URL=https://n8n.musiques-incongrues.net
       - GENERIC_TIMEZONE=Europe/Paris
       - N8N_DEFAULT_LOCALE=fr-FR
       - N8N_RUNNERS_ENABLED=true
