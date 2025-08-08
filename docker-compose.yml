@@ -19,8 +19,8 @@ services:
     volumes:
       - ./src/flarum/composer.json:/opt/flarum/composer.json
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
-      - ./var/flarum/data:/data
-      - ./var/flarum/vendor:/opt/flarum/vendor
+      - ./var/flarum/data:/data:shared
+      - ./var/flarum/vendor:/opt/flarum/vendor:shared
     environment:
       - DB_HOST=db
       - DB_NAME=${MYSQL_DATABASE}
