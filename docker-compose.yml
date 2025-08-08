@@ -75,8 +75,6 @@ services:
     build:
       context: ./opt/s9formatter-api
       dockerfile: Dockerfile
-    volumes:
-      - ./opt/s9formatter-api:/var/www/html
     env_file: .env
     command: php -S 0.0.0:8020 -t /var/www/html
 
