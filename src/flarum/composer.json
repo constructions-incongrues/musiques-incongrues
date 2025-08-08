@@ -68,6 +68,7 @@
         "justoverclock/og-meta-tag": "*",
         "litalino/mason": "^1.2",
         "clarkwinkelmann/flarum-ext-formatted-banner": "^1.0",
-        "clarkwinkelmann/flarum-ext-discussion-bookmarks": "^2.0"
+        "clarkwinkelmann/flarum-ext-discussion-bookmarks": "^2.0",
+        "datlechin/flarum-link-preview": "^1.6"
     }
 }
