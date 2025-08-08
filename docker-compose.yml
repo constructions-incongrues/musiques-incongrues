@@ -29,6 +29,7 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_NOPREFIX=true
     restart: always
     env_file: .env
     networks:
@@ -45,8 +46,6 @@ services:
     labels:
       caddy: pma.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 80}}"
-    ports:
-      - 8010:80
     networks:
       - caddy
       - default
