@@ -66,6 +66,7 @@
         "nearata/flarum-ext-cloudflare": "*",
         "datlechin/flarum-discussion-count": "*",
         "justoverclock/og-meta-tag": "*",
-        "litalino/mason": "^1.2"
+        "litalino/mason": "^1.2",
+        "clarkwinkelmann/flarum-ext-formatted-banner": "^1.0"
     }
 }
