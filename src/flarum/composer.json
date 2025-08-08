@@ -64,12 +64,10 @@
         "webbinaro/flarum-calendar": "^1.7",
         "spookygames/flarum-ext-auth-keycloak": "^1.3",
         "nearata/flarum-ext-cloudflare": "*",
-        "datlechin/flarum-discussion-count": "*",
         "justoverclock/og-meta-tag": "*",
         "litalino/mason": "^1.2",
         "clarkwinkelmann/flarum-ext-formatted-banner": "^1.0",
         "clarkwinkelmann/flarum-ext-discussion-bookmarks": "^2.0",
-        "datlechin/flarum-link-preview": "^1.6",
         "dhtml/composer": "^2.1"
     }
 }
