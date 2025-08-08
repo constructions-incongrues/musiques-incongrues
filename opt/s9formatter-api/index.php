@@ -41,11 +41,19 @@ $text = filter_input(INPUT_GET, 'text');
 
 if ($text) {
     $text = urldecode($text);
-    $text = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
-    $text = str_replace("<t>", "", $text);
-    $text = str_replace("</t>", "", $text);
-    $xml  = $parser->parse($text);
-    $html = $renderer->render($xml);
+    try {
+      $text = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8, ISO-8859-1');
+      $text = str_replace("<t>", "", $text);
+      $text = str_replace("</t>", "", $text);
+      $xml  = $parser->parse($text);
+      $html = $renderer->render($xml);
+    } catch (Exception $e) {
+      $text = mb_convert_encoding($text, 'UTF-8', 'ISO-8859-1');
+      $text = str_replace("<t>", "", $text);
+      $text = str_replace("</t>", "", $text);
+      $xml  = $parser->parse($text);
+      $html = $renderer->render($xml);
+    }
 } else {
     $html = sprintf('<p>S9ERROR : %s</p>', urldecode($_GET['text']));
 }
