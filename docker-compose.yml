@@ -16,9 +16,11 @@ services:
     image: crazymax/flarum:1.8.10
     depends_on:
       - db
+      - redis
     volumes:
       - ./src/flarum/composer.json:/opt/flarum/composer.json
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
+      - ./src/flarum/extend.php:/opt/flarum/extend.php
       - flarum_data:/data
       - flarum_vendor:/opt/flarum/vendor
       - ./src/flarum/emojis:/opt/flarum/public/emojis
@@ -78,13 +80,11 @@ services:
     env_file: .env
     command: php -S 0.0.0:8020 -t /var/www/html
 
-  smtp:
-    image: registry.gitlab.com/egos-tech/smtp:latest
-    environment:
-      - SMARTHOST_ADDRESS=smtp.gmail.com
-      - SMARTHOST_PORT=587
-      - GMAIL_USER=${GMAIL_USER}
-      - GMAIL_PASSWORD=${GMAIL_PASSWORD}
+  redis:
+    image: redis:8.2
+    restart: always
+    volumes:
+      - redis_data:/data
 
 networks:
   caddy:
@@ -95,3 +95,4 @@ volumes:
   flarum_data: ~
   flarum_vendor: ~
   n8n_data: ~
+  redis_data: ~
