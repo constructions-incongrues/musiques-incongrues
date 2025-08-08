@@ -41,6 +41,7 @@ $text = filter_input(INPUT_GET, 'text');
 
 if ($text) {
     $text = urldecode($text);
+    $text = mb_convert_encoding($text, 'UTF-8', 'UTF-8, ISO-8859-1, ISO-8859-15, Windows-1252');
     $text = str_replace("<t>", "", $text);
     $text = str_replace("</t>", "", $text);
     $xml  = $parser->parse($text);
