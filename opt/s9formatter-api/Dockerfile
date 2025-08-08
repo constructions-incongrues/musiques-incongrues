@@ -14,6 +14,8 @@ RUN docker-php-ext-install -j$(nproc) xsl
 
 COPY . /var/www/html
 
+RUN ls -lh /var/www/html
+
 WORKDIR /var/www/html
 
 RUN composer update --no-dev --optimize-autoloader
