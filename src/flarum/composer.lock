@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b225cf7faa8e83294d0a5b3566aa7826",
+    "content-hash": "4e62955a92136924cbcdc4a3de9c174c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1288,6 +1288,70 @@
                 "source": "https://github.com/dflydev/dflydev-fig-cookies/tree/v3.1.0"
             },
             "time": "2023-07-18T20:41:43+00:00"
+        },
+        {
+            "name": "dhtml/composer",
+            "version": "2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dhtml/composer.git",
+                "reference": "aa35c4bdafff641c2a379b55c63bfbfdd4a5650d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dhtml/composer/zipball/aa35c4bdafff641c2a379b55c63bfbfdd4a5650d",
+                "reference": "aa35c4bdafff641c2a379b55c63bfbfdd4a5650d",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "far fa-eye",
+                        "color": "#fff",
+                        "backgroundColor": "#008000"
+                    },
+                    "title": "Composer Preview",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhtml\\COMPOSER\\": "src/",
+                    "Dhtml\\COMPOSER\\Controllers\\": "src/Controllers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ogundipe",
+                    "email": "diltony@gmail.com",
+                    "homepage": "https://africoders.com/"
+                }
+            ],
+            "description": "Preview new flarum discussion.",
+            "homepage": "https://africoders.com",
+            "keywords": [
+                "composer",
+                "flarum",
+                "preview"
+            ],
+            "support": {
+                "issues": "https://github.com/dhtml/composer/issues",
+                "source": "https://github.com/dhtml/composer/tree/2.1.5"
+            },
+            "time": "2024-06-30T23:57:27+00:00"
         },
         {
             "name": "doctrine/cache",
