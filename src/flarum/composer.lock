@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74b25250458f0769f26e2421b62694d5",
+    "content-hash": "0763da64b79850e10d263ec9d95cd170",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -7690,6 +7690,92 @@
                 "source": "https://github.com/thephpleague/oauth2-google/tree/4.0.1"
             },
             "time": "2023-03-17T15:20:52+00:00"
+        },
+        {
+            "name": "litalino/mason",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Litalino/mason.git",
+                "reference": "ea3b76b22ddafdd33392221bdd35fe9eccce011a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Litalino/mason/zipball/ea3b76b22ddafdd33392221bdd35fe9eccce011a",
+                "reference": "ea3b76b22ddafdd33392221bdd35fe9eccce011a",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.2"
+            },
+            "replace": {
+                "flagrow/mason": "*",
+                "fof/mason": "*",
+                "xsoft-ict/mason-tag": "*"
+            },
+            "require-dev": {
+                "flarum/phpstan": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/32715-mason-tag-extension"
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-dungeon",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF Mason Tag",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Litalino\\Mason\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/"
+                },
+                {
+                    "name": "Robert Bui",
+                    "email": "xsoft.ict@gmail.com",
+                    "homepage": "https://xsoft.asia/"
+                },
+                {
+                    "name": "Litalino",
+                    "email": "info@khatvongsong.vn",
+                    "homepage": "https://khatvongsong.vn/"
+                }
+            ],
+            "description": "Add custom fields to discussions, associate with primary tag",
+            "keywords": [
+                "custom-fields",
+                "discussion",
+                "extension",
+                "flagrow",
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/32715-mason-tag-extension",
+                "issues": "https://github.com/litalino/mason/issues",
+                "source": "https://github.com/litalino/mason"
+            },
+            "time": "2023-11-29T11:25:33+00:00"
         },
         {
             "name": "matthiasmullie/minify",
