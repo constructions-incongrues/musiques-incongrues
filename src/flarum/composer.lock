@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb5b83be41afe805726ad366c686b05a",
+    "content-hash": "a8936dd0c8b968472ba226839c2bfdec",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -616,64 +616,6 @@
                 "source": "https://github.com/clarkwinkelmann/flarum-ext-discussion-bookmarks"
             },
             "time": "2023-12-16T16:14:35+00:00"
-        },
-        {
-            "name": "clarkwinkelmann/flarum-ext-formatted-banner",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/clarkwinkelmann/flarum-ext-formatted-banner.git",
-                "reference": "e2dd043d88d81bc3384f6ee625adae1de3cb49ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/clarkwinkelmann/flarum-ext-formatted-banner/zipball/e2dd043d88d81bc3384f6ee625adae1de3cb49ea",
-                "reference": "e2dd043d88d81bc3384f6ee625adae1de3cb49ea",
-                "shasum": ""
-            },
-            "require": {
-                "flarum/core": "^1.2"
-            },
-            "type": "flarum-extension",
-            "extra": {
-                "flarum-extension": {
-                    "icon": {
-                        "name": "fas fa-bullhorn",
-                        "color": "#fff",
-                        "backgroundColor": "#684ba6"
-                    },
-                    "title": "Formatted Banner",
-                    "category": "feature"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ClarkWinkelmann\\FormattedBanner\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Clark Winkelmann",
-                    "email": "clark.winkelmann@gmail.com",
-                    "homepage": "https://clarkwinkelmann.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Customizable welcome banner for Flarum",
-            "keywords": [
-                "banner",
-                "flarum"
-            ],
-            "support": {
-                "forum": "https://discuss.flarum.org/d/31152",
-                "issues": "https://github.com/clarkwinkelmann/flarum-ext-formatted-banner/issues",
-                "source": "https://github.com/clarkwinkelmann/flarum-ext-formatted-banner"
-            },
-            "time": "2022-07-04T10:06:12+00:00"
         },
         {
             "name": "clarkwinkelmann/flarum-ext-group-invitation",
