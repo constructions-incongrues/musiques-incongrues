@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29f00262c0b89951fa5fe7aa73d976c4",
+    "content-hash": "137d0c453a15cb347e584e0a2d798863",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2203,6 +2203,83 @@
                 "source": "https://github.com/flamarkt/backoffice"
             },
             "time": "2024-06-01T14:10:48+00:00"
+        },
+        {
+            "name": "flamarkt/taxonomies",
+            "version": "0.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flamarkt/taxonomies.git",
+                "reference": "4bd4cb25074bb28a28f89efec698659dde872ec8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flamarkt/taxonomies/zipball/4bd4cb25074bb28a28f89efec698659dde872ec8",
+                "reference": "4bd4cb25074bb28a28f89efec698659dde872ec8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "flamarkt/backoffice": "^0.1.0",
+                "flarum/core": "^1.2"
+            },
+            "replace": {
+                "fof/taxonomies": "*"
+            },
+            "require-dev": {
+                "flarum/tags": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-tags",
+                        "color": "#fff",
+                        "backgroundColor": "#266a13"
+                    },
+                    "title": "Taxonomies",
+                    "category": "feature",
+                    "optional-dependencies": [
+                        "flamarkt/core",
+                        "flarum/tags",
+                        "fof/transliterator",
+                        "fof/user-directory",
+                        "v17development/flarum-blog"
+                    ]
+                },
+                "flamarkt-backoffice": {
+                    "showInBackoffice": true,
+                    "settingsInBackoffice": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flamarkt\\Taxonomies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Flamarkt",
+                    "homepage": "https://flamarkt.org/"
+                }
+            ],
+            "description": "Taxonomies for discussions, users and products.",
+            "keywords": [
+                "flamarkt",
+                "flarum",
+                "marketplace",
+                "taxonomies"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/30499",
+                "issues": "https://github.com/flamarkt/taxonomies/issues",
+                "source": "https://github.com/flamarkt/taxonomies"
+            },
+            "time": "2023-03-09T21:52:49+00:00"
         },
         {
             "name": "flarum-lang/french",

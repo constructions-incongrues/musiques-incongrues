@@ -71,6 +71,7 @@
         "fof/discussion-thumbnail": "*",
         "clarkwinkelmann/flarum-ext-post-stream-search": "^1.1",
         "clarkwinkelmann/flarum-ext-advanced-search-highlight": "^1.0",
-        "fof/redis": "*"
+        "fof/redis": "*",
+        "flamarkt/taxonomies": "*"
     }
 }
