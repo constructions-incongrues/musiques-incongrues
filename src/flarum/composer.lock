@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "137d0c453a15cb347e584e0a2d798863",
+    "content-hash": "d2d2b541814cfdb66df5bd0e988cdf32",
     "packages": [
+        {
+            "name": "anthonyogundipe/preview-discussion",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dhtml/flarum-ext-preview-discussion.git",
+                "reference": "fe3dd13b40bd8a2ef5415a53794d296d29704072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dhtml/flarum-ext-preview-discussion/zipball/fe3dd13b40bd8a2ef5415a53794d296d29704072",
+                "reference": "fe3dd13b40bd8a2ef5415a53794d296d29704072",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.2.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": ""
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "",
+                        "color": "",
+                        "backgroundColor": ""
+                    },
+                    "title": "Preview Discussion"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "anthonyogundipe\\PreviewDicussion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Preview the final output when editing a new discussion",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "issues": "https://github.com/dhtml/flarum-ext-preview-discussion/issues",
+                "source": "https://github.com/dhtml/flarum-ext-preview-discussion/tree/0.1.2"
+            },
+            "time": "2024-06-03T21:25:58+00:00"
+        },
         {
             "name": "aws/aws-crt-php",
             "version": "v1.2.7",
