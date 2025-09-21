@@ -14,14 +14,6 @@ services:
     restart: always
     env_file: .env
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.1.4
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    restart: always
-    env_file: .env
-    mem_limit: 1G
-
   flarum:
     image: crazymax/flarum:1.8.10
     depends_on:
