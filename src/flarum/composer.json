@@ -73,6 +73,13 @@
         "clarkwinkelmann/flarum-ext-advanced-search-highlight": "^1.0",
         "fof/redis": "*",
         "flamarkt/taxonomies": "*",
-        "anthonyogundipe/preview-discussion": "^0.1.2"
+        "acpl/flarum-lscache": "^3.3",
+        "clarkwinkelmann/flarum-ext-mass-actions": "^1.1",
+        "fof/byobu": "*",
+        "clarkwinkelmann/flarum-ext-mailing": "^1.1",
+        "foskym/flarum-oauth-center": "*",
+        "nodeloc/flarum-auto-moderator": "*",
+        "fof/drafts": "*",
+        "blomstra/search": "*"
     }
 }
