@@ -80,6 +80,8 @@
         "foskym/flarum-oauth-center": "*",
         "nodeloc/flarum-auto-moderator": "*",
         "fof/drafts": "*",
-        "the-turk/flarum-stickiest": "^3.0.0"
+        "the-turk/flarum-stickiest": "^3.0.0",
+        "v17development/flarum-seo": "^2.0",
+        "ianm/boring-avatars": "*"
     }
 }

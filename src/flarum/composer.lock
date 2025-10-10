@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3133648e5cbe150b9f5c6727adf2e904",
+    "content-hash": "e940ac9fce6a5a12ec404db28dc3ba3a",
     "packages": [
         {
             "name": "acpl/flarum-lscache",
@@ -6011,6 +6011,94 @@
                 "source": "https://github.com/mtibben/html2text/tree/4.3.2"
             },
             "time": "2024-08-20T02:43:29+00:00"
+        },
+        {
+            "name": "ianm/boring-avatars",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imorland/flarum-ext-boring-avatars.git",
+                "reference": "4cc4917f8ae0c504fa40697983cdf0df4ba674d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imorland/flarum-ext-boring-avatars/zipball/4cc4917f8ae0c504fa40697983cdf0df4ba674d1",
+                "reference": "4cc4917f8ae0c504fa40697983cdf0df4ba674d1",
+                "shasum": ""
+            },
+            "require": {
+                "enshrined/svg-sanitize": "*",
+                "flarum/core": "^1.8.3",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "flarum/gdpr": "dev-main",
+                "flarum/phpstan": "*",
+                "fof/oauth": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "js": true,
+                        "css": true,
+                        "admin": true,
+                        "forum": true,
+                        "locale": true,
+                        "gitConf": true,
+                        "styleci": false,
+                        "jsCommon": true,
+                        "prettier": true,
+                        "typescript": true,
+                        "bundlewatch": false,
+                        "editorConfig": true,
+                        "githubActions": true,
+                        "backendTesting": false
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "image": "assets/logo.svg",
+                        "backgroundSize": "100%",
+                        "backgroundColor": "#FECC4D",
+                        "backgroundRepeat": "no-repeat",
+                        "backgroundPosition": "center"
+                    },
+                    "title": "Boring Avatars",
+                    "category": ""
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IanM\\BoringAvatars\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "IanM",
+                    "email": "ian@flarum.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Replace default Flarum avatars with Boring Avatars.",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/33989",
+                "issues": "https://github.com/imorland/flarum-ext-boring-avatars/issues",
+                "source": "https://github.com/imorland/flarum-ext-boring-avatars"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/ianm1"
+                }
+            ],
+            "time": "2024-11-03T14:34:02+00:00"
         },
         {
             "name": "ianm/follow-users",
@@ -14126,6 +14214,81 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.3.0"
             },
             "time": "2024-12-21T16:25:41+00:00"
+        },
+        {
+            "name": "v17development/flarum-seo",
+            "version": "v2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/v17development/flarum-seo.git",
+                "reference": "fa84a0ca1803f86507914e5816eb20acbc89c998"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/v17development/flarum-seo/zipball/fa84a0ca1803f86507914e5816eb20acbc89c998",
+                "reference": "fa84a0ca1803f86507914e5816eb20acbc89c998",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "flarum/core": "^1.0.0",
+                "php": "^8.0"
+            },
+            "conflict": {
+                "franzl/flarum-open-links-in-new-tab": "*",
+                "zerosonesfun/elint": "*"
+            },
+            "require-dev": {
+                "flarum/phpstan": "^1.0",
+                "flarum/tags": "^1.8",
+                "fof/best-answer": "^1.6",
+                "fof/pages": "^1.0"
+            },
+            "suggest": {
+                "fof/sitemap": "Allows you to generate powerful sitemap.xml files"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/18316"
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-check",
+                        "color": "#ffffff",
+                        "backgroundColor": "#0072ff"
+                    },
+                    "title": "SEO",
+                    "category": "feature",
+                    "optional-dependencies": [
+                        "flarum/tags"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "V17Development\\FlarumSeo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "V17 Development",
+                    "email": "info@v17.dev"
+                }
+            ],
+            "description": "Adds SEO tags for your Flarum forum",
+            "homepage": "https://v17.dev/projects/flarum-seo",
+            "support": {
+                "docs": "https://community.v17.dev/knowledgebase/category/flarum-seo",
+                "forum": "https://discuss.flarum.org/d/18316",
+                "issues": "https://github.com/v17development/flarum-seo/issues",
+                "source": "https://github.com/v17development/flarum-seo"
+            },
+            "time": "2025-09-17T12:47:25+00:00"
         },
         {
             "name": "voku/portable-ascii",
