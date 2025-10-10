@@ -24,7 +24,6 @@ services:
       - ./src/flarum/composer.lock:/opt/flarum/composer.lock
       - ./src/flarum/extend.php:/opt/flarum/extend.php
       - flarum_data:/data
-      - flarum_storage:/opt/flarum/storage
       - flarum_vendor:/opt/flarum/vendor
       - ./src/flarum/emojis:/opt/flarum/public/emojis
       - ./src/flarum/custom:/opt/flarum/public/custom
@@ -99,6 +98,5 @@ volumes:
   es_data: ~
   flarum_data: ~
   flarum_vendor: ~
-  flarum_storage: ~
   n8n_data: ~
   redis_data: ~
