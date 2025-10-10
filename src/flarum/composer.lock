@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e940ac9fce6a5a12ec404db28dc3ba3a",
+    "content-hash": "f61602d36e573a115b25176f1f618729",
     "packages": [
         {
             "name": "acpl/flarum-lscache",
@@ -10849,6 +10849,75 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "romanshul/flarum-editor",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/romanshul/flarum-editor.git",
+                "reference": "af7a5f81af7d44690cb8c1bc368bb8a3a8665e0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romanshul/flarum-editor/zipball/af7a5f81af7d44690cb8c1bc368bb8a3a8665e0e",
+                "reference": "af7a5f81af7d44690cb8c1bc368bb8a3a8665e0e",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.0.0",
+                "flarum/markdown": "^1.0.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "js": true,
+                        "css": false,
+                        "admin": true,
+                        "forum": true,
+                        "gitConf": true,
+                        "styleci": true,
+                        "jsCommon": true,
+                        "prettier": true,
+                        "typescript": false,
+                        "bundlewatch": false,
+                        "editorConfig": true,
+                        "githubActions": true,
+                        "backendTesting": false
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-smile",
+                        "color": "#fff",
+                        "backgroundColor": "#238c59"
+                    },
+                    "title": "Flarum editor"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RomanSh\\FlarumEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shulzhenko Roman",
+                    "email": "rm.shulzhenko@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Updated flarum editor",
+            "support": {
+                "issues": "https://github.com/romanshul/flarum-editor/issues",
+                "source": "https://github.com/romanshul/flarum-editor/tree/1.0.3"
+            },
+            "time": "2022-09-21T11:35:11+00:00"
         },
         {
             "name": "s9e/regexp-builder",

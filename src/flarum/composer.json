@@ -82,6 +82,7 @@
         "fof/drafts": "*",
         "the-turk/flarum-stickiest": "^3.0.0",
         "v17development/flarum-seo": "^2.0",
-        "ianm/boring-avatars": "*"
+        "ianm/boring-avatars": "*",
+        "romanshul/flarum-editor": "^1.0"
     }
 }
