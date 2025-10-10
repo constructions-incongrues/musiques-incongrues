@@ -1,0 +1,5 @@
+table_definition_cache=800
+performance_schema=ON
+key_buffer_size=264216576
+innodb_buffer_pool_size=256M
+innodb_log_file_size=32M
