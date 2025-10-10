@@ -1,3 +1,4 @@
+[mysqld]
 table_definition_cache=800
 performance_schema=ON
 key_buffer_size=264216576
