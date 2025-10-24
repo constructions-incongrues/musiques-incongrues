@@ -86,6 +86,7 @@
         "romanshul/flarum-editor": "^1.0",
         "fof/doorman": "*",
         "clarkwinkelmann/flarum-ext-discussion-lists": "^1.0",
-        "nodeloc/flarum-ext-my-emoji": "*"
+        "nodeloc/flarum-ext-split-view": "*",
+        "huseyinfiliz/sticky-title": "*"
     }
 }
