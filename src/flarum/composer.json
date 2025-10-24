@@ -83,6 +83,9 @@
         "the-turk/flarum-stickiest": "^3.0.0",
         "v17development/flarum-seo": "^2.0",
         "ianm/boring-avatars": "*",
-        "romanshul/flarum-editor": "^1.0"
+        "romanshul/flarum-editor": "^1.0",
+        "fof/doorman": "*",
+        "clarkwinkelmann/flarum-ext-discussion-lists": "^1.0",
+        "nodeloc/flarum-ext-my-emoji": "*"
     }
 }
