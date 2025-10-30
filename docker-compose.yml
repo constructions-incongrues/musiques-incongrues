@@ -34,6 +34,7 @@ services:
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
       - DB_NOPREFIX=true
+      - FLARUM_REFERRER_POLICY=strict-origin-when-cross-origin
     restart: always
     env_file: .env
     networks:

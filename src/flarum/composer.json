@@ -87,6 +87,9 @@
         "fof/doorman": "*",
         "clarkwinkelmann/flarum-ext-discussion-lists": "^1.0",
         "nodeloc/flarum-ext-split-view": "*",
-        "huseyinfiliz/sticky-title": "*"
+        "huseyinfiliz/sticky-title": "*",
+        "fof/synopsis": "^1.0",
+        "fof/impersonate": "*",
+        "constructions-incongrues/flarum-lite-youtube": "*"
     }
 }

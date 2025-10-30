@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e58f24eb1aebcc99cddbc0d162ff19e1",
+    "content-hash": "8e603358ad1455a4c1a9436ec2e594f6",
     "packages": [
         {
             "name": "acpl/flarum-lscache",
@@ -1205,6 +1205,91 @@
                 "source": "https://github.com/components/font-awesome/tree/5.15.4"
             },
             "time": "2021-08-15T10:31:24+00:00"
+        },
+        {
+            "name": "constructions-incongrues/flarum-lite-youtube",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/constructions-incongrues/flarum-lite-youtube.git",
+                "reference": "78cf04329ea1759e13419ba3fb49792f75c2bfcf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/constructions-incongrues/flarum-lite-youtube/zipball/78cf04329ea1759e13419ba3fb49792f75c2bfcf",
+                "reference": "78cf04329ea1759e13419ba3fb49792f75c2bfcf",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.5.0"
+            },
+            "require-dev": {
+                "flarum/testing": "^1.0.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "js": true,
+                        "css": true,
+                        "admin": true,
+                        "forum": true,
+                        "locale": true,
+                        "gitConf": true,
+                        "styleci": true,
+                        "jsCommon": true,
+                        "prettier": true,
+                        "typescript": true,
+                        "bundlewatch": false,
+                        "editorConfig": true,
+                        "githubActions": true,
+                        "backendTesting": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fab fa-youtube",
+                        "color": "#fff",
+                        "backgroundColor": "#117187"
+                    },
+                    "title": "Lite YouTube Embed",
+                    "category": "features",
+                    "optional-dependencies": [
+                        "fof/formatting"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SychO\\LiteYouTube\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sami Mazouz",
+                    "email": "sychocouldy@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tristan Rivoallan",
+                    "email": "tristan@constructions-incongrues.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lite YouTube Embed integration",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/31817-lite-youtube-embed/5",
+                "issues": "https://github.com/SychO9/flarum-lite-youtube/issues",
+                "source": "https://github.com/SychO9/flarum-lite-youtube"
+            },
+            "time": "2025-10-24T23:05:19+00:00"
         },
         {
             "name": "datlechin/flarum-copy-links",
@@ -4617,6 +4702,94 @@
             "time": "2025-04-03T21:08:37+00:00"
         },
         {
+            "name": "fof/impersonate",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/impersonate.git",
+                "reference": "6bf957b5e9a087ec30431633947865c8d5ad4f1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/impersonate/zipball/6bf957b5e9a087ec30431633947865c8d5ad4f1d",
+                "reference": "6bf957b5e9a087ec30431633947865c8d5ad4f1d",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.8.7"
+            },
+            "replace": {
+                "flagrow/impersonate": "*"
+            },
+            "require-dev": {
+                "flarum/phpstan": "*"
+            },
+            "suggest": {
+                "fof/moderator-notes": "Allows audit logging when users are impersonated"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/9868"
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-id-card",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF Impersonate",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\Impersonate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/"
+                },
+                {
+                    "name": "IanM",
+                    "email": "ian@blomstra.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Login as other users of your forum",
+            "homepage": "https://friendsofflarum.org",
+            "keywords": [
+                "extension",
+                "flarum",
+                "impersonate",
+                "login"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/9868",
+                "issues": "https://github.com/FriendsOfFlarum/impersonate/issues",
+                "source": "https://github.com/FriendsOfFlarum/impersonate"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/fof/donate",
+                    "type": "website"
+                }
+            ],
+            "time": "2024-10-22T08:39:25+00:00"
+        },
+        {
             "name": "fof/linguist",
             "version": "1.1.6",
             "source": {
@@ -5385,6 +5558,88 @@
                 }
             ],
             "time": "2023-11-12T13:11:32+00:00"
+        },
+        {
+            "name": "fof/synopsis",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/synopsis.git",
+                "reference": "34e718e0da5c59b9e2c21c1f29d4b6add07871f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/synopsis/zipball/34e718e0da5c59b9e2c21c1f29d4b6add07871f7",
+                "reference": "34e718e0da5c59b9e2c21c1f29d4b6add07871f7",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.8.0",
+                "flarum/tags": "*"
+            },
+            "replace": {
+                "ianm/synopsis": "*"
+            },
+            "require-dev": {
+                "flarum/core": "*",
+                "flarum/phpstan": "*",
+                "flarum/testing": "^1.0.0",
+                "symfony/var-dumper": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true,
+                        "backendTesting": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-comment-dots",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF Synopsis",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\Synopsis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "IanM",
+                    "email": "ian@flarum.org"
+                }
+            ],
+            "description": "Show summary excerpts on discussion lists.",
+            "keywords": [
+                "discussion",
+                "excerpt",
+                "excerpts",
+                "flarum",
+                "summaries",
+                "summary",
+                "synopsis"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/37231",
+                "issues": "https://github.com/friendsofflarum/synopsis/issues",
+                "source": "https://github.com/friendsofflarum/synopsis"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/ianm1"
+                }
+            ],
+            "time": "2025-04-30T13:20:49+00:00"
         },
         {
             "name": "fof/upload",
