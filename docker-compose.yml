@@ -93,7 +93,7 @@ services:
 
   nocodb:
     depends_on:
-      root_db:
+      postgres:
         condition: service_healthy
     environment:
       NC_DB: "pg://postgres:5432?u=nocodb&p=nocodb&d=nocodb"
