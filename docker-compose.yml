@@ -91,6 +91,38 @@ services:
     volumes:
       - redis_data:/data
 
+  nocodb:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NC_DB: "pg://postgres:5432?u=nocodb&p=nocodb&d=nocodb"
+    image: "nocodb/nocodb:latest"
+    restart: always
+    volumes:
+      - nocodb_data:/usr/app/data
+    labels:
+      caddy: nocodb.musiques-incongrues.net
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+    networks:
+      - caddy
+      - default
+
+  postgres:
+    environment:
+      POSTGRES_DB: nocodb
+      POSTGRES_PASSWORD: nocodb
+      POSTGRES_USER: nocodb
+    healthcheck:
+      interval: 10s
+      retries: 10
+      test: "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""
+      timeout: 2s
+    image: postgres:16.6
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
 networks:
   caddy:
     external: true
@@ -102,3 +134,5 @@ volumes:
   flarum_vendor: ~
   n8n_data: ~
   redis_data: ~
+  postgres_data: ~
+  nocodb_data: ~
