@@ -90,6 +90,8 @@
         "huseyinfiliz/sticky-title": "*",
         "fof/synopsis": "^1.0",
         "fof/impersonate": "*",
-        "constructions-incongrues/flarum-lite-youtube": "*"
+        "constructions-incongrues/flarum-lite-youtube": "*",
+        "blt950/oauth-generic": "^1.0",
+        "askvortsov/flarum-pwa": "^3.4"
     }
 }
