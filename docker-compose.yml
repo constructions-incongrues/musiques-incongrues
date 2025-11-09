@@ -56,7 +56,7 @@ services:
       - default
 
   n8n:
-    image: docker.n8n.io/n8nio/n8n:1.111.1
+    image: docker.n8n.io/n8nio/n8n:1.118.2
     restart: always
     environment:
       - N8N_PORT=5678
