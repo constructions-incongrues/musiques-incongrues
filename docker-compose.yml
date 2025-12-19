@@ -67,6 +67,7 @@ services:
       - N8N_DEFAULT_LOCALE=fr-FR
       - N8N_RUNNERS_ENABLED=true
       - N8N_PAYLOAD_SIZE_MAX=268435456 # 256MB
+      - NODE_FUNCTION_ALLOW_EXTERNAL=cheerio
     volumes:
       - n8n_data:/home/node/.n8n
       - ./etc/workflows.json:/tmp/workflows.json
