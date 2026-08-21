@@ -14,6 +14,11 @@ services:
       - ./etc/mariadb.cnf:/etc/mysql/mariadb.conf.d/99-flarum.cnf:ro
     restart: always
     env_file: .env
+    labels:
+      # Sans cette étiquette, la sauvegarde copie les fichiers InnoDB d'une base
+      # en cours d'écriture — un instantané déchiré, qui restaure peut-être. Avec
+      # elle, stack-back produit un vidage SQL cohérent.
+      restic-compose-backup.mariadb: "true"
 
   flarum:
     image: crazymax/flarum:1.8.10
@@ -92,6 +97,19 @@ services:
     volumes:
       - redis_data:/data
 
+  backup:
+    # Sauvegarde chiffrée vers Cloudflare R2, tous les jours à 1 h.
+    # Les identifiants viennent de .env, que Komodo produit à partir des
+    # variables [[MUSIQUES_INCONGRUES_RESTIC_*]] — rien en clair ici.
+    image: ghcr.io/lawndoc/stack-back:v1.4.5
+    restart: always
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      # Volume nommé, et non ./cache : chez superlarsen ce montage fait
+      # atterrir le cache restic dans l'arbre de travail git.
+      - backup_cache:/cache
+
 networks:
   caddy:
     external: true
@@ -103,3 +121,4 @@ volumes:
   flarum_vendor: ~
   n8n_data: ~
   redis_data: ~
+  backup_cache: ~
