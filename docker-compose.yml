@@ -18,7 +18,12 @@ services:
       # Sans cette étiquette, la sauvegarde copie les fichiers InnoDB d'une base
       # en cours d'écriture — un instantané déchiré, qui restaure peut-être. Avec
       # elle, stack-back produit un vidage SQL cohérent.
-      restic-compose-backup.mariadb: "true"
+      #
+      # Le préfixe est `stack-back` : le fork ghcr.io/lawndoc/stack-back a renommé
+      # son espace d'étiquettes. Avec `restic-compose-backup.*`, le conteneur
+      # démarre, joint le dépôt, et rapporte « No containers for backup found » —
+      # il ne sauvegarde rien, et il ne signale pas d'erreur.
+      stack-back.mariadb: "true"
 
   flarum:
     image: crazymax/flarum:1.8.10
@@ -46,6 +51,7 @@ services:
       - caddy
       - default
     labels:
+      stack-back.volumes: "true"
       caddy: www.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 8000}}"
 
@@ -78,6 +84,7 @@ services:
       - ./etc/workflows.json:/tmp/workflows.json
     env_file: .env
     labels:
+      stack-back.volumes: "true"
       caddy: n8n.musiques-incongrues.net
       caddy.reverse_proxy: "{{upstreams 5678}}"
     networks:
