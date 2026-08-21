@@ -23,7 +23,12 @@ services:
       # son espace d'étiquettes. Avec `restic-compose-backup.*`, le conteneur
       # démarre, joint le dépôt, et rapporte « No containers for backup found » —
       # il ne sauvegarde rien, et il ne signale pas d'erreur.
-      stack-back.mariadb: "true"
+      # `mysql` et non `mariadb`, bien que l'image soit MariaDB : le gestionnaire
+      # est choisi par les variables d'environnement, pas par l'image. Celui de
+      # `mariadb` lit MARIADB_ROOT_PASSWORD / MARIADB_USER / MARIADB_PASSWORD ;
+      # ce service n'a que des MYSQL_*, et le vidage plantait sur un mot de passe
+      # à None. Même choix que superlarsen-wordpress-db.
+      stack-back.mysql: "true"
 
   flarum:
     image: crazymax/flarum:1.8.10
