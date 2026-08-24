@@ -80,7 +80,15 @@ services:
       - default
 
   n8n:
-    image: docker.n8n.io/n8nio/n8n:1.123.11
+    # 1.123.11 → 1.123.75 le 2026-08-24. Six CVE critiques d'exécution de code,
+    # signalées chaque semaine depuis avril 2026 par le BSI via le service abus
+    # de Hetzner — des messages que personne ne lisait.
+    #
+    # Rester dans la ligne 1.123.x est un choix, pas un retard : elle est
+    # maintenue, et les six correctifs y sont (le plus tardif en 1.123.43).
+    # L'étiquette `latest` pointe la 2.x, qui est une migration ; la confondre
+    # avec la cible transforme une ligne à changer en chantier imaginaire.
+    image: docker.n8n.io/n8nio/n8n:1.123.75
     restart: always
     environment:
       - N8N_PORT=5678
