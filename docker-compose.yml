@@ -8,7 +8,13 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     ports:
-      - 3307:3306
+      # Lié à la boucle locale, PAS à 0.0.0.0. Sans le préfixe d'adresse, Docker
+      # publie le port sur toutes les interfaces ET insère sa règle AVANT ufw —
+      # un pare-feu actif n'y aurait rien changé. Résultat : cette base a écouté
+      # l'internet entier, et le BSI l'a signalée via Hetzner.
+      # Pour un accès distant, passer par un tunnel SSH :
+      #     ssh -L 3307:127.0.0.1:3307 cartons
+      - 127.0.0.1:3307:3306
     volumes:
       - db_data:/var/lib/mysql
       - ./etc/mariadb.cnf:/etc/mysql/mariadb.conf.d/99-flarum.cnf:ro
@@ -64,11 +70,13 @@ services:
     image: phpmyadmin
     restart: always
     env_file: .env
-    labels:
-      caddy: pma.musiques-incongrues.net
-      caddy.reverse_proxy: "{{upstreams 80}}"
+    # PLUS D'ÉTIQUETTE caddy, donc plus de route publique : une console
+    # d'administration de base de données ouverte sur l'internet est une porte
+    # d'entrée offerte, et celle-ci l'était sur pma.musiques-incongrues.net.
+    # Le conteneur tourne toujours et reste joignable depuis la machine :
+    #     ssh -L 8080:musiques-incongrues-prod-phpmyadmin-1:80 cartons
+    # Retiré aussi du réseau `caddy`, qu'il n'a plus de raison de joindre.
     networks:
-      - caddy
       - default
 
   n8n:
