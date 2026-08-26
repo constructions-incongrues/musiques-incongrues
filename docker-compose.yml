@@ -98,6 +98,19 @@ services:
       - GENERIC_TIMEZONE=Europe/Paris
       - N8N_DEFAULT_LOCALE=fr-FR
       - N8N_RUNNERS_ENABLED=true
+      # CVE-2025-68668 (CVSS 9.9) — exécution de code via le nœud Code en Python.
+      # Signalée le 2026-08-26 par le BSI, sur la 1.123.75 que nous venons de poser.
+      #
+      # Contrairement aux six CVE de la montée précédente, celle-ci n'a PAS de
+      # correctif dans la ligne 1.x : l'avis ne corrige qu'en 2.0.0. La branche
+      # maintenue ne suffit donc plus, et le commentaire ci-dessus qui l'oppose à
+      # `latest` avait raison le 2026-08-24, pas aujourd'hui.
+      #
+      # ponytail: contournement recommandé par l'avis, pas le correctif. Vérifié
+      # avant d'être posé : zéro nœud Code en Python dans la base (`pythonCode`,
+      # 0 occurrence), donc rien ne casse. Le jour où un workflow en aura besoin,
+      # la sortie est la migration 2.x — pas le retrait de cette ligne.
+      - N8N_PYTHON_ENABLED=false
       - N8N_PAYLOAD_SIZE_MAX=268435456 # 256MB
       - NODE_FUNCTION_ALLOW_EXTERNAL=cheerio
     volumes:
