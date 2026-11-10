@@ -37,7 +37,12 @@ services:
       stack-back.mysql: "true"
 
   flarum:
-    image: crazymax/flarum:1.8.10
+    # 1.8.10 → 1.8.20 le 2026-11-10. PHP2Shell (CVE-2026-109618 et 109619) :
+    # exécution de code à distance sans authentification dans le moteur PHP
+    # lui-même, donc quelle que soit la qualité du forum. L'image 1.8.10
+    # embarquait PHP 8.3.22 ; la 1.8.20 embarque 8.5.12, version corrigée,
+    # vérifiée par `docker run --entrypoint php … -v` avant ce changement.
+    image: crazymax/flarum:1.8.20
     depends_on:
       - db
       - redis
